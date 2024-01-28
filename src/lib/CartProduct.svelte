@@ -1,18 +1,32 @@
 <script>
 	export let product;
+
+	export let handleClick;
 </script>
 
-<div class="container">
-	<img src={product.image} alt={product.name + ' image '} />
-	<div class="right-container">
-		<p class="product-name">{product.name}</p>
-		<div class="bottom-container">
-			<div class="counter">
-				<button class=" decrement">-</button>
-				<p>0</p>
-				<button class="increment">+</button>
+<div class="container flex m-[1rem]">
+	<img
+		class=" w-[65px] h-[100px] object-cover"
+		src={product.image}
+		alt={product.name + ' image '}
+	/>
+	<div class=" m-l-[1rem] w-full m-3">
+		<p class=" text-xs">{product.name}</p>
+		<div class="flex justify-between items-center mt-5">
+			<div class=" flex items-center border border-gray-500 rounded-sm">
+				<button
+					on:click={() => handleClick(product.id, 'decr')}
+					class="hover:bg-slate-400 transition ease-linear"><span class="m-3">-</span></button
+				>
+				<p class=" border-r border-l border-gray-500 h-[100%] px-4">
+					<span class=" ">{product.amount}</span>
+				</p>
+				<button
+					on:click={() => handleClick(product.id, 'incr')}
+					class="hover:bg-slate-400 transition ease-linear"><span class=" m-3">+</span></button
+				>
 			</div>
-			<p class="product-price">{product.price}</p>
+			<p class="product-price">${product.price}</p>
 		</div>
 	</div>
 </div>

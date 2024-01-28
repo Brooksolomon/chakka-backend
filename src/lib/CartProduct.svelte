@@ -18,7 +18,7 @@
 					on:click={() => handleClick(product.id, 'decr')}
 					class="hover:bg-slate-400 transition ease-linear"><span class="m-3">-</span></button
 				>
-				<p class=" border-r border-l border-gray-500 h-[100%] px-4">
+				<p class=" border-r border-l border-gray-500 h-[100%] px-4 font-light">
 					<span class=" ">{product.amount}</span>
 				</p>
 				<button
@@ -26,7 +26,7 @@
 					class="hover:bg-slate-400 transition ease-linear"><span class=" m-3">+</span></button
 				>
 			</div>
-			<p class="product-price">${product.price}</p>
+			<p class="product-price font-light">ETB {product.price}</p>
 		</div>
 	</div>
 </div>

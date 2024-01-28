@@ -1,6 +1,8 @@
 <script>
 	import Sidebar from '../lib/Sidebar.svelte';
 	let sidebar_show = false;
+
+	const hideSidebar = () => (sidebar_show = false);
 </script>
 
 {#if sidebar_show}
@@ -10,7 +12,7 @@
 		on:click={() => (sidebar_show = !sidebar_show)}
 		class=" backdrop fixed bg-black/50 w-[100vw] h-[100vh] z-20"
 	></div>
-	<Sidebar show={sidebar_show} />
+	<Sidebar show={sidebar_show} {hideSidebar} />
 {/if}
 <div class="  relative z-10">
 	<button on:click={() => (sidebar_show = !sidebar_show)}>Toggle Sidebar</button>

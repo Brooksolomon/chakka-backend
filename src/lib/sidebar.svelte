@@ -3,7 +3,7 @@
 	import CartProduct from './CartProduct.svelte';
 
 	export let show = false;
-
+	export let hideSidebar;
 	let products = [
 		{
 			id: 1,
@@ -65,6 +65,10 @@
 
 <div class="sidebar relative z-40" transition:fly={{ x: 250, opacity: 1 }}>
 	<div class="cart-list">
+		<div class="flex justify-between">
+			<p>Cart</p>
+			<p on:click={() => hideSidebar()} class=" cursor-pointer">x</p>
+		</div>
 		{#each products as prod}
 			<CartProduct product={prod} {handleClick} />
 		{/each}
@@ -72,8 +76,8 @@
 
 	<div class="bottom">
 		<div class="subtotal">
-			<p>SUBTOTAL</p>
-			<p class=" font-semibold">{subtotal}</p>
+			<p class="font-light">SUBTOTAL</p>
+			<p class=" ">ETB {subtotal}</p>
 		</div>
 		<button class="checkout">Checkout</button>
 	</div>

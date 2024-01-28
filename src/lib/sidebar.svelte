@@ -55,28 +55,29 @@
 	$: {
 		subtotal = 0;
 		products.map((product) => {
-			subtotal += product.amount * product.price;
+			subtotal += Number(parseFloat((product.amount * product.price).toFixed(2)));
 		});
+
+		let deci = subtotal.toString().split('.')[1];
+		subtotal = parseFloat(`${Math.floor(subtotal)}.${deci ? deci?.slice(0, 2) : '00'}`);
 	}
 </script>
 
-{#if show}
-	<div class="sidebar" transition:fly={{ x: 250, opacity: 1 }}>
-		<div class="cart-list">
-			{#each products as prod}
-				<CartProduct product={prod} {handleClick} />
-			{/each}
-		</div>
-
-		<div class="bottom">
-			<div class="subtotal">
-				<p>SUBTOTAL</p>
-				<p class=" font-semibold">{subtotal}</p>
-			</div>
-			<button class="checkout">Checkout</button>
-		</div>
+<div class="sidebar relative z-40" transition:fly={{ x: 250, opacity: 1 }}>
+	<div class="cart-list">
+		{#each products as prod}
+			<CartProduct product={prod} {handleClick} />
+		{/each}
 	</div>
-{/if}
+
+	<div class="bottom">
+		<div class="subtotal">
+			<p>SUBTOTAL</p>
+			<p class=" font-semibold">{subtotal}</p>
+		</div>
+		<button class="checkout">Checkout</button>
+	</div>
+</div>
 
 <style>
 	.sidebar {
@@ -85,7 +86,7 @@
 		right: 0;
 		height: 100vh;
 		padding: 2rem 1rem 0.6rem;
-		border-left: 1px solid #aaa;
+
 		background: #fff;
 		overflow-y: auto;
 		width: 25rem;

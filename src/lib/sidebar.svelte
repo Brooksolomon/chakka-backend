@@ -1,60 +1,44 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import CartProduct from './CartProduct.svelte';
-
+	import cartStore from '../stores/cartStore';
 	export let show = false;
 	export let hideSidebar;
-	let products = [
-		{
-			id: 1,
-			name: 'BLACK MAGIQUE | Black Cumin',
-			price: 18.95,
-			amount: 1,
-			image:
-				'https://cdn.shopify.com/s/files/1/0819/8881/3081/files/Black_Magique_3_550x825.jpg?v=1695822406'
-		},
-		{
-			id: 2,
-			name: 'SOFT BURST | Moringa',
-			price: 21.95,
-			amount: 1,
-			image:
-				'https://cdn.shopify.com/s/files/1/0819/8881/3081/files/Soft_Burst_3_550x825.jpg?v=1695822486'
-		},
-		{
-			id: 3,
-			name: 'RISE & GLOW | Coffee',
-			price: 27.95,
-			amount: 1,
-			image:
-				'https://cdn.shopify.com/s/files/1/0819/8881/3081/files/Rise_Shine_2_550x825.jpg?v=1695822474'
-		}
-	];
 
 	const handleClick = (id, task) => {
-		const newList = products.map((product) => {
-			if (product.id === id) {
-				return {
-					...product,
-					amount:
-						task === 'incr'
-							? product.amount + 1
-							: product.amount > 1
-								? product.amount - 1
-								: product.amount
-				};
-			}
-			return product;
-		});
+		const newList = $cartStore.cartProducts
+			.filter((product) => !(product.id === id && task === 'decr' && product.amount === 1))
+			.map((product) => {
+				if (product.id === id) {
+					return {
+						...product,
+						amount:
+							task === 'incr'
+								? product.amount + 1
+								: product.amount > 1
+									? product.amount - 1
+									: product.amount
+					};
+				} else {
+					return product;
+				}
+			});
 
-		products = newList;
+		console.log('newList', newList);
+
+		cartStore.update((curr) => {
+			return {
+				...curr,
+				cartProducts: newList
+			};
+		});
 	};
 
 	let subtotal = 0;
 
 	$: {
 		subtotal = 0;
-		products.map((product) => {
+		$cartStore.cartProducts.map((product) => {
 			subtotal += Number(parseFloat((product.amount * product.price).toFixed(2)));
 		});
 
@@ -69,7 +53,7 @@
 			<p>Cart</p>
 			<p on:click={() => hideSidebar()} class=" cursor-pointer">x</p>
 		</div>
-		{#each products as prod}
+		{#each $cartStore.cartProducts as prod}
 			<CartProduct product={prod} {handleClick} />
 		{/each}
 	</div>

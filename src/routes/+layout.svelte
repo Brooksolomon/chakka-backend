@@ -42,14 +42,7 @@
 		}
 	];
 
-	onMount(() => {
-		cartStore.update((curr) => {
-			return {
-				...curr,
-				cartProducts: products
-			};
-		});
-	});
+	onMount(() => {});
 </script>
 
 <Navbar />

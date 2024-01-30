@@ -7,7 +7,7 @@
 <div class="container flex m-[1rem]">
 	<img
 		class=" w-[65px] h-[100px] object-cover"
-		src={product.image}
+		src={product.images[0]}
 		alt={product.name + ' image '}
 	/>
 	<div class=" m-l-[1rem] w-full m-3">

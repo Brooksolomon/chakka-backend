@@ -25,7 +25,7 @@
 			});
 
 		console.log('newList', newList);
-
+		localStorage.setItem('cart_list', JSON.stringify(newList));
 		cartStore.update((curr) => {
 			return {
 				...curr,
@@ -63,7 +63,10 @@
 			<p class="font-light">SUBTOTAL</p>
 			<p class=" ">ETB {subtotal}</p>
 		</div>
-		<button class="checkout">Checkout</button>
+		<button
+			class="w-full bg-[#d6cb6b] border-none rounded p-[15px] pointer hover:bg-[#b9b063] transition ease-in-out"
+			>Checkout</button
+		>
 	</div>
 </div>
 
@@ -88,13 +91,6 @@
 		justify-content: space-between;
 	}
 	.checkout {
-		width: 100%;
-		background: hsl(53.83deg 56.61% 62.94%);
-		border: none;
-		border-radius: 5px;
-		padding: 15px;
-		transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
-		cursor: pointer;
 	}
 
 	.checkout:hover {

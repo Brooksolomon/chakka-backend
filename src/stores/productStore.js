@@ -1,10 +1,7 @@
-<script>
-	import { onMount } from 'svelte';
-	import Navbar from '../lib/Navbar.svelte';
-	import '../app.css';
-	import cartStore from '../stores/cartStore';
+import { writable } from 'svelte/store';
 
-	let products = [
+export default writable({
+	products: [
 		{
 			id: 1,
 			name: 'BLACK MAGIQUE | Black Cumin',
@@ -29,19 +26,6 @@
 			image:
 				'https://cdn.shopify.com/s/files/1/0819/8881/3081/files/Rise_Shine_2_550x825.jpg?v=1695822474'
 		}
-	];
-
-	onMount(() => {
-		cartStore.update((curr) => {
-			return {
-				...curr,
-				cartProducts: products
-			};
-		});
-	});
-</script>
-
-<Navbar />
-<div class="bg-[#f7f3ec] pt-[15vh] md:pt-[35vh] px-[5%]">
-	<slot />
-</div>
+	],
+	categories: []
+});

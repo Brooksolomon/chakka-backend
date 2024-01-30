@@ -3,10 +3,10 @@
 >
 	<img src="/Chakka.png" alt="" width="10" class=" w-[8rem]" />
 	<ul class=" flex items-center">
-		<li class=" mx-16 font-light tracking-widest text-xl">Home</li>
-		<li class=" mx-16 font-light tracking-widest text-xl">Products</li>
-		<li class=" mx-16 font-light tracking-widest text-xl">Sustainable</li>
-		<li class=" mx-16 font-light tracking-widest text-xl">About</li>
-		<li class=" mx-16 font-light tracking-widest text-xl">Contact</li>
+		<li class=" mx-16 font-light tracking-widest text-xl text-slate-900">Home</li>
+		<li class=" mx-16 font-light tracking-widest text-xl text-slate-900">Products</li>
+		<li class=" mx-16 font-light tracking-widest text-xl text-slate-900">Sustainable</li>
+		<li class=" mx-16 font-light tracking-widest text-xl text-slate-900">About</li>
+		<li class=" mx-16 font-light tracking-widest text-xl text-slate-900">Contact</li>
 	</ul>
 </nav>

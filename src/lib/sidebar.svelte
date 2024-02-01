@@ -2,9 +2,8 @@
 	import { fly } from 'svelte/transition';
 	import CartProduct from './CartProduct.svelte';
 	import cartStore from '../stores/cartStore';
+	import uiStore from '../stores/uiStore';
 	import { onMount } from 'svelte';
-	export let show = false;
-	export let hideSidebar;
 
 	const handleClick = (id, task) => {
 		const newList = $cartStore.cartProducts
@@ -48,11 +47,37 @@
 	}
 </script>
 
+<div
+	on:click={() => {
+		uiStore.update((curr) => {
+			return {
+				...curr,
+				sidebarShow: false
+			};
+		});
+	}}
+	class=" fixed bg-black/50 w-[100vw] h-[100vh] z-20 top-0 left-0"
+></div>
+
 <div class="sidebar relative z-40" transition:fly={{ x: 250, opacity: 1 }}>
 	<div class="cart-list">
 		<div class="flex justify-between">
 			<p>Cart</p>
-			<p on:click={() => hideSidebar()} class=" cursor-pointer">x</p>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+			<p
+				on:click={() => {
+					uiStore.update((curr) => {
+						return {
+							...curr,
+							sidebarShow: false
+						};
+					});
+				}}
+				class=" cursor-pointer"
+			>
+				x
+			</p>
 		</div>
 		{#each $cartStore.cartProducts as prod}
 			<CartProduct product={prod} {handleClick} />

@@ -1,7 +1,8 @@
 <script>
 	import Product from '../../lib/Product.svelte';
 	import productStore from '../../stores/productStore';
-
+	import { ShoppingCartSimple } from 'phosphor-svelte';
+	import uiStore from '../../stores/uiStore';
 	console.log($productStore.products);
 </script>
 
@@ -27,4 +28,18 @@
 			</button>
 		</div>
 	</div>
+</div>
+
+<div
+	on:click={() => {
+		uiStore.update((curr) => {
+			return {
+				...curr,
+				sidebarShow: true
+			};
+		});
+	}}
+	class=" w-10 h-10 border border-slate-500 fixed right-2 top-[90%] flex items-center justify-center rounded-full"
+>
+	<ShoppingCartSimple color="#1e2938" class="" weight="fill" size={20} />
 </div>

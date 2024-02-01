@@ -3,7 +3,8 @@
 	import Navbar from '../lib/Navbar.svelte';
 	import '../app.css';
 	import cartStore from '../stores/cartStore';
-
+	import uiStore from '../stores/uiStore';
+	import Sidebar from '../lib/Sidebar.svelte';
 	let products = [
 		{
 			id: 1,
@@ -60,3 +61,10 @@
 <div class="bg-[#f7f3ec] pt-[15vh] md:pt-[35vh] px-[5%]">
 	<slot />
 </div>
+
+{#if $uiStore.sidebarShow}
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
+
+	<Sidebar />
+{/if}

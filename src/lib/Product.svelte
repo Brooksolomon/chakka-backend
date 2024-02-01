@@ -4,7 +4,6 @@
 	import Modal from '../lib/Modal.svelte';
 	import productStore from '../stores/productStore';
 	import ProductDetails from './ProductDetails.svelte';
-	import modalStore from '../stores/modalStore';
 	import { onMount } from 'svelte';
 
 	const showModal = () => {
@@ -15,10 +14,6 @@
 			};
 		});
 	};
-
-	onMount(() => {
-		console.log($modalStore);
-	});
 </script>
 
 <div class="flex flex-col items-center">

@@ -4,8 +4,10 @@
 	import Modal from 'svelte-simple-modal';
 	import productStore from '../stores/productStore';
 	import ProductDetails from './ProductDetails.svelte';
+	import { onMount } from 'svelte';
 
 	const modal = writable(null);
+
 	const showModal = () => {
 		productStore.update((curr) => {
 			return {

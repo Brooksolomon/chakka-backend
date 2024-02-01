@@ -17,9 +17,14 @@
 				]
 			};
 		});
+
 		localStorage.setItem('cart_list', JSON.stringify($cartStore.cartProducts));
 		console.log(JSON.parse(localStorage.getItem('cart_list')));
 	};
+
+	onMount(() => {
+		console.log($cartStore.cartProducts);
+	});
 </script>
 
 <div class="p-5 flex flex-col">

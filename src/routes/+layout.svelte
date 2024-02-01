@@ -42,7 +42,18 @@
 		}
 	];
 
-	onMount(() => {});
+	onMount(() => {
+		if (window) {
+			cartStore.update((curr) => {
+				return {
+					...curr,
+					cartProducts: localStorage.getItem('cart_list')
+						? JSON.parse(localStorage.getItem('cart_list'))
+						: []
+				};
+			});
+		}
+	});
 </script>
 
 <Navbar />

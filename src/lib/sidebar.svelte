@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import CartProduct from './CartProduct.svelte';
 	import cartStore from '../stores/cartStore';
+	import { onMount } from 'svelte';
 	export let show = false;
 	export let hideSidebar;
 

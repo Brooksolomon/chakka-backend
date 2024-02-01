@@ -1,12 +1,11 @@
 <script>
 	export let product;
 	import { writable } from 'svelte/store';
-	import Modal from 'svelte-simple-modal';
+	import Modal from '../lib/Modal.svelte';
 	import productStore from '../stores/productStore';
 	import ProductDetails from './ProductDetails.svelte';
+	import modalStore from '../stores/modalStore';
 	import { onMount } from 'svelte';
-
-	const modal = writable(null);
 
 	const showModal = () => {
 		productStore.update((curr) => {
@@ -15,8 +14,11 @@
 				activeProduct: product
 			};
 		});
-		modal.set(ProductDetails);
 	};
+
+	onMount(() => {
+		console.log($modalStore);
+	});
 </script>
 
 <div class="flex flex-col items-center">
@@ -26,10 +28,11 @@
 
 	<button
 		on:click={showModal}
-		for="product_details"
 		class="btn font-light tracking-widest text-xl m-3 w-full bg-[#d6cb6b] border-none rounded p-[10px] pointer hover:bg-[#aea55a] transition ease-in-out text-slate-800"
-		>VIEW PRODUCT</button
+		onclick={`my_modal_${product.id}.showModal()`}>VIEW PRODUCT</button
 	>
 </div>
 
-<Modal classBg="" show={$modal}></Modal>
+<Modal id={product.id}>
+	<ProductDetails {product} /></Modal
+>

@@ -2,12 +2,14 @@
 	export let id;
 </script>
 
-<input type="checkbox" {id} class="modal-toggle" />
-<div class="modal" role="dialog">
-	<div class="modal-box">
+<dialog id={`my_modal_${id}`} class="modal bg-white">
+	<div class="modal-box w-11/12 max-w-5xl bg-white">
 		<slot />
 		<div class="modal-action">
-			<label for={id} class="btn">Close!</label>
+			<form method="dialog">
+				<!-- if there is a button, it will close the modal -->
+				<button class="btn">Close</button>
+			</form>
 		</div>
 	</div>
-</div>
+</dialog>

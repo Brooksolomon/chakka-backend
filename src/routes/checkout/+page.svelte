@@ -1,7 +1,9 @@
 <script>
+	import {FireFunc} from '../../lib/firebase/firebase'
 	function submitForm(event) {
 		event.preventDefault();
 	}
+
 </script>
 
 <div class="flex items-center justify-center h-screen">
@@ -127,5 +129,15 @@
 		>
 			Pay now
 		</button>
+		
 	</form>
+
+	<button
+			class="bg-transparent hover:bg-blue-500 text-blue-700 font-extrabold hover:text-white py-2 px-4 ml-48 border border-blue-500 hover:border-transparent rounded"
+			on:click={() =>{FireFunc.loginFunction("adminuser","12345678")}}
+		>
+			 fetch admin
+		</button>
+
 </div>
+

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { collection, doc, addDoc,getFirestore } from "firebase/firestore"; 
+import { collection, doc, setDoc,getFirestore, getDoc,deleteDoc,getDocs } from "firebase/firestore"; 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,9 +23,10 @@ const db = getFirestore(app);
 //const analytics = getAnalytics(app);
 
 
-async function addProduct(name,source,price,description,category,imageURL){
-    await addDoc(collection(db, "cities"),
+async function addProduct(productID,name,source,price,description,category,imageURL){
+    await setDoc(doc(db, "products", String(productID)),
     {
+        productID:productID,
         name:name,
         source:source,
         price:price,
@@ -37,4 +38,59 @@ async function addProduct(name,source,price,description,category,imageURL){
 
 }
 
-addProduct("hey","there",2000,"yeah thats tuff","first",['x','y','z'])
+async function deleteProduct(productID){
+  await await deleteDoc(doc(db, "products", String(productID)));
+}
+
+async function fetchSpecificProuct(productID)
+{
+  const mydoc = await(getDoc(doc(db,"products",String(productID))))
+  if (mydoc.exists()){
+    return mydoc.data()
+  }else{
+    return null
+  }
+}
+async function fetchAllProducts()
+{
+  const querySnapshot = await getDocs(collection(db, "products"));
+  const AllProducts = []
+  querySnapshot.forEach((doc) => {
+    AllProducts.push(doc.data());
+  });
+  console.log(AllProducts)
+  return AllProducts
+}
+
+async function loginFunction(username,password)
+{
+  const mydoc = await(getDoc(doc(db,"auth","admin")))
+  const mydata = mydoc.data()
+  console.log(username,mydata.username, password,mydata.password)
+  if(username==mydata.username && password==mydata.password)
+  {
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+async function changeAdminInformation(username,password)
+{
+  await setDoc(doc(db, "auth", "admin"),
+  {
+    username:username,
+    password:password
+
+  });
+}
+
+
+export const FireFunc = {
+  addProduct:addProduct ,//void
+  deleteProduct:deleteProduct,//void
+  fetchSpecificProuct:fetchSpecificProuct,//object
+  fetchAllProducts:fetchAllProducts,//array of objects
+  loginFunction:loginFunction,//boolean
+  changeAdminInformation:changeAdminInformation//void
+}

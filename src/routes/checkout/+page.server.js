@@ -17,7 +17,7 @@ export const actions = {
         email: email,
         first_name: firstName,
         last_name: lastName,
-        callback_url: 'https://chapa.co',
+        callback_url: 'https://25j2qx1p-5173.uks1.  .ms/',
         return_url: 'https://the-binger.vercel.app/',
         customization: {
             title: 'I love e-commerce',

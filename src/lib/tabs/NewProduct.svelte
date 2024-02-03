@@ -1,15 +1,14 @@
 <script>
 	import { FireFunc } from '../firebase/firebase';
-	const { addProduct } = FireFunc;
+	import { v4 as uuid } from 'uuid';
+	const { addProduct, addImage } = FireFunc;
 	let formData = {};
-
+	const cateogries = ['Cold-Pressed Oils', 'Essential Oils', 'Herbes And Spices'];
 	const handleInput = (e) => {
 		formData = {
 			...formData,
 			[e.target.name]: event.target.value
 		};
-
-		console.log(formData);
 	};
 
 	let imgs = [''];
@@ -37,7 +36,10 @@
 		reader.readAsDataURL(file);
 	};
 
-	const handlePost = () => {};
+	const handlePost = async () => {
+		console.log(imgs);
+		await addImage(uuid(), imgs[0].file);
+	};
 </script>
 
 <form action="" class="flex flex-col mx-2">
@@ -58,7 +60,9 @@
 		on:input={handleInput}
 	/>
 	<input type="text" class=" input my-3" placeholder="Price" name="price" on:input={handleInput} />
-
+	<select name="category" id="">
+		<option value=""></option>
+	</select>
 	<div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
 		{#each imgs as img, i}
 			{#if img}
@@ -81,8 +85,8 @@
 		</div>
 	{/if}
 
-	<div class="flex justify-start">
-		<button on:click={handlePost} class="btn bg-[#d6cb6b] w-[20rem] my-3 hover:bg-[#aea55a]"
+	<div class="flex justify-center">
+		<button on:click={handlePost} class="btn bg-[#d6cb6b] w-[25rem] my-3 hover:bg-[#aea55a]"
 			>Post</button
 		>
 	</div>

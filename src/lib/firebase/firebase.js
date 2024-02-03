@@ -1,5 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import {getStorage, ref, uploadBytes} from 'firebase/storage'
+import {v4} from 'uuid';
+
 import { getAnalytics } from "firebase/analytics";
 import { collection, doc, setDoc,getFirestore, getDoc,deleteDoc,getDocs } from "firebase/firestore"; 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -20,6 +23,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 //const analytics = getAnalytics(app);
 
 
@@ -85,6 +89,29 @@ async function changeAdminInformation(username,password)
   });
 }
 
+async function addToPending(txnReference,firstName,lastName,email,city,subCity,description,order)
+{
+  await setDoc(doc(db, "pending", txnReference),
+  {
+    txnReference:txnReference,
+    firstName:firstName,
+    lastName:lastName,
+    email:email,
+    city:city,
+    subCity:subCity,
+    description:description,
+    order:order
+
+  });
+}
+async function addImage(productID,img)
+{
+  const imageRef = ref(storage,String(productID)+'/'+img.name +v4());
+  uploadBytes(imageRef,img);
+  console.log("uploaded")
+
+}
+
 
 export const FireFunc = {
   addProduct:addProduct ,//void
@@ -92,5 +119,7 @@ export const FireFunc = {
   fetchSpecificProuct:fetchSpecificProuct,//object
   fetchAllProducts:fetchAllProducts,//array of objects
   loginFunction:loginFunction,//boolean
-  changeAdminInformation:changeAdminInformation//void
+  changeAdminInformation:changeAdminInformation,//void
+  addToPending:addToPending, //void
+  addImage:addImage //void
 }

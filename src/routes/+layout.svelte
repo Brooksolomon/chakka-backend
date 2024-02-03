@@ -4,7 +4,7 @@
 	import '../app.css';
 	import cartStore from '../stores/cartStore';
 	import uiStore from '../stores/uiStore';
-	//import Sidebar from '../lib/Sidebar.svelte';
+	import Sidebar from '../lib/Sidebar.svelte';
 	let products = [
 		{
 			id: 1,

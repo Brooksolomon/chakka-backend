@@ -107,7 +107,8 @@ async function addToPending(txnReference,firstName,lastName,email,city,subCity,d
 async function addImage(productID,img)
 {
   const imageRef = ref(storage,String(productID)+'/'+img.name +v4());
-  uploadBytes(imageRef,img);
+  const res = await uploadBytes(imageRef,img);
+  console.log(res);
   console.log("uploaded")
 
 }

@@ -38,7 +38,9 @@
 
 	const handlePost = async () => {
 		console.log(imgs);
-		await addImage(uuid(), imgs[0].file);
+		let { name, source, description, price, cateogry } = formData;
+		//const product = await addProduct(uuid(), )
+		//await addImage(uuid(), imgs[0].file);
 	};
 </script>
 
@@ -56,12 +58,14 @@
 		type="text"
 		class=" input my-3"
 		placeholder="Description"
-		name="descripton"
+		name="description"
 		on:input={handleInput}
 	/>
 	<input type="text" class=" input my-3" placeholder="Price" name="price" on:input={handleInput} />
 	<select name="category" id="">
-		<option value=""></option>
+		{#each cateogries as cat}
+			<option value={cat}>{cat}</option>
+		{/each}
 	</select>
 	<div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
 		{#each imgs as img, i}

@@ -3,7 +3,23 @@
 	import productStore from '../../stores/productStore';
 	import { ShoppingCartSimple } from 'phosphor-svelte';
 	import uiStore from '../../stores/uiStore';
-	console.log($productStore.products);
+	import { onMount } from 'svelte';
+	import { FireFunc } from '../../lib/firebase/firebase';
+	const { fetchProductWithCategory } = FireFunc;
+	onMount(async () => {
+		const products = await fetchProductWithCategory('Cold-Pressed Oils');
+		productStore.update((curr) => {
+			return {
+				...curr,
+				products: products.map((prod) => {
+					return {
+						...prod,
+						images: prod.imageURL
+					};
+				})
+			};
+		});
+	});
 </script>
 
 <div class=" text-slate-800 my-8">

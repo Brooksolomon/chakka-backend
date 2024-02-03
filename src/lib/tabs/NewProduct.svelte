@@ -1,16 +1,14 @@
 <script>
 	import { FireFunc } from '../firebase/firebase';
 	import { v4 as uuid } from 'uuid';
-	const { addProduct } = FireFunc;
+	const { addProduct, addImage } = FireFunc;
 	let formData = {};
-	const cateogries = [];
+	const cateogries = ['Cold-Pressed Oils', 'Essential Oils', 'Herbes And Spices'];
 	const handleInput = (e) => {
 		formData = {
 			...formData,
 			[e.target.name]: event.target.value
 		};
-
-		console.log(formData);
 	};
 
 	let imgs = [''];
@@ -38,15 +36,9 @@
 		reader.readAsDataURL(file);
 	};
 
-	const handlePost = () => {
-		addProduct(
-			uuid(),
-			formData.name,
-			formData.source,
-			formData.price,
-			formData.price,
-			formData.category
-		);
+	const handlePost = async () => {
+		console.log(imgs);
+		await addImage(uuid(), imgs[0].file);
 	};
 </script>
 
@@ -93,8 +85,8 @@
 		</div>
 	{/if}
 
-	<div class="flex justify-start">
-		<button on:click={handlePost} class="btn bg-[#d6cb6b] w-[20rem] my-3 hover:bg-[#aea55a]"
+	<div class="flex justify-center">
+		<button on:click={handlePost} class="btn bg-[#d6cb6b] w-[25rem] my-3 hover:bg-[#aea55a]"
 			>Post</button
 		>
 	</div>

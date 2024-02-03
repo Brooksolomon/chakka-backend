@@ -1,8 +1,9 @@
 <script>
 	import { FireFunc } from '../firebase/firebase';
+	import { v4 as uuid } from 'uuid';
 	const { addProduct } = FireFunc;
 	let formData = {};
-
+	const cateogries = [];
 	const handleInput = (e) => {
 		formData = {
 			...formData,
@@ -37,7 +38,16 @@
 		reader.readAsDataURL(file);
 	};
 
-	const handlePost = () => {};
+	const handlePost = () => {
+		addProduct(
+			uuid(),
+			formData.name,
+			formData.source,
+			formData.price,
+			formData.price,
+			formData.category
+		);
+	};
 </script>
 
 <form action="" class="flex flex-col mx-2">
@@ -58,7 +68,9 @@
 		on:input={handleInput}
 	/>
 	<input type="text" class=" input my-3" placeholder="Price" name="price" on:input={handleInput} />
-
+	<select name="category" id="">
+		<option value=""></option>
+	</select>
 	<div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
 		{#each imgs as img, i}
 			{#if img}

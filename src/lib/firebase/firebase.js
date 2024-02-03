@@ -4,7 +4,7 @@ import {getStorage, ref, uploadBytes} from 'firebase/storage'
 import {v4} from 'uuid';
 
 import { getAnalytics } from "firebase/analytics";
-import { collection, doc, setDoc,getFirestore, getDoc,deleteDoc,getDocs } from "firebase/firestore"; 
+import { collection, doc, setDoc,getFirestore, getDoc,deleteDoc,getDocs,where,query } from "firebase/firestore"; 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -42,6 +42,9 @@ async function addProduct(productID,name,source,price,description,category,image
 
 }
 
+
+
+
 async function deleteProduct(productID){
   await await deleteDoc(doc(db, "products", String(productID)));
 }
@@ -65,7 +68,18 @@ async function fetchAllProducts()
   console.log(AllProducts)
   return AllProducts
 }
+async function fetchProductWithCategory(category)
+{
+  const pr = collection(db, "products");
+  const q = query(pr, where("category", "==", category));
+  const querySnapshot = await getDocs(q);
+  const AllProducts = []
+  querySnapshot.forEach((doc) => {
+    AllProducts.push(doc.data());
+  });
+  console.log(AllProducts)
 
+}
 async function loginFunction(username,password)
 {
   const mydoc = await(getDoc(doc(db,"auth","admin")))
@@ -122,5 +136,6 @@ export const FireFunc = {
   loginFunction:loginFunction,//boolean
   changeAdminInformation:changeAdminInformation,//void
   addToPending:addToPending, //void
-  addImage:addImage //void
+  addImage:addImage, //void
+  fetchProductWithCategory:fetchProductWithCategory //array of objects
 }

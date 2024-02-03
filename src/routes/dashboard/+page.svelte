@@ -11,7 +11,7 @@
 	<div class="dashboard-left flex-[0.1]">
 		<TabList />
 	</div>
-	<div class=" w-full h-[30rem] flex-[0.9] mx-10">
+	<div class=" w-full h-[100%] flex-[0.9] mx-10 overflow-auto">
 		{#if $dashboardStore.openTab === 'newProduct'}
 			<NewProduct />
 		{:else if $dashboardStore.openTab === 'editProduct'}

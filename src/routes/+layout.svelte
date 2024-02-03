@@ -58,7 +58,7 @@
 </script>
 
 <Navbar />
-<div class="bg-[#f7f3ec] pt-[15vh] md:pt-[35vh] px-[5%]">
+<div class="bg-[#f7f3ec] pt-[15vh] md:pt-[25vh] px-[5%] h-[100vh]">
 	<slot />
 </div>
 

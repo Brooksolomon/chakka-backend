@@ -85,6 +85,22 @@ async function changeAdminInformation(username,password)
   });
 }
 
+async function addToPending(txnReference,firstName,lastName,email,city,subCity,description,order)
+{
+  await setDoc(doc(db, "pending", txnReference),
+  {
+    txnReference:txnReference,
+    firstName:firstName,
+    lastName:lastName,
+    email:email,
+    city:city,
+    subCity:subCity,
+    description:description,
+    order:order
+
+  });
+}
+
 
 export const FireFunc = {
   addProduct:addProduct ,//void
@@ -92,5 +108,6 @@ export const FireFunc = {
   fetchSpecificProuct:fetchSpecificProuct,//object
   fetchAllProducts:fetchAllProducts,//array of objects
   loginFunction:loginFunction,//boolean
-  changeAdminInformation:changeAdminInformation//void
+  changeAdminInformation:changeAdminInformation,//void
+  addToPending:addToPending //void
 }

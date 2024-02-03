@@ -17,7 +17,7 @@ export const actions = {
         email: email,
         first_name: firstName,
         last_name: lastName,
-        callback_url: 'https://25j2qx1p-5173.uks1.  .ms/',
+        callback_url: 'https://chakkawebhook.onrender.com/chapa',
         return_url: 'https://the-binger.vercel.app/',
         customization: {
             title: 'I love e-commerce',
@@ -27,20 +27,11 @@ export const actions = {
         }
         
         let txnReference,url;
-        // myChapa.initialize(customerInfo, { autoRef: true }).then(response => {
-        //    // console.log(response)
-        //     txnReference = response.tx_ref;
-        //     url = response.js;
-        // }).catch(e => {console.log(e)})
-        
-        
         let response = await myChapa.initialize(customerInfo, { autoRef: true })
         txnReference = response["tx_ref"];
         url = response["data"]["checkout_url"];
-    
 
+        
         redirect(302, url)
-
-        //let response = await myChapa.verify('txn-reference')
     }
 }

@@ -1,5 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import {getStorage, ref, uploadBytes} from 'firebase/storage'
+import {v4} from 'uuid';
+
 import { getAnalytics } from "firebase/analytics";
 import { collection, doc, setDoc,getFirestore, getDoc,deleteDoc,getDocs } from "firebase/firestore"; 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -20,6 +23,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 //const analytics = getAnalytics(app);
 
 
@@ -100,6 +104,13 @@ async function addToPending(txnReference,firstName,lastName,email,city,subCity,d
 
   });
 }
+async function addImage(productID,img)
+{
+  const imageRef = ref(storage,String(productID)+'/'+img.name +v4());
+  uploadBytes(imageRef,img);
+  console.log("uploaded")
+
+}
 
 
 export const FireFunc = {
@@ -109,5 +120,6 @@ export const FireFunc = {
   fetchAllProducts:fetchAllProducts,//array of objects
   loginFunction:loginFunction,//boolean
   changeAdminInformation:changeAdminInformation,//void
-  addToPending:addToPending //void
+  addToPending:addToPending, //void
+  addImage:addImage //void
 }

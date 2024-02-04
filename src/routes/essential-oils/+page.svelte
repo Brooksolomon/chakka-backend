@@ -9,8 +9,8 @@
 	const { fetchProductWithCategory } = FireFunc;
 	onMount(async () => {
 		const products = await fetchProductWithCategory('Essential Oils');
-
-		productStore.update((curr) => {
+		console.log(products);
+		/* productStore.update((curr) => {
 			return {
 				...curr,
 				products: products.map((prod) => {
@@ -20,7 +20,7 @@
 					};
 				})
 			};
-		});
+		}); */
 	});
 </script>
 

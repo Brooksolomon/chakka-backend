@@ -19,7 +19,6 @@
 
 		reader.onload = () => {
 			const base64Img = reader.result;
-			console.log('base64Img', base64Img);
 
 			// Update your `imgs` array with the base64 representation
 			imgs = imgs.map((img, i) => {
@@ -29,18 +28,27 @@
 					return img;
 				}
 			});
-
-			console.log('imgs', imgs);
 		};
 
 		reader.readAsDataURL(file);
 	};
 
 	const handlePost = async () => {
-		console.log(imgs);
-		let { name, source, description, price, cateogry } = formData;
-		//const product = await addProduct(uuid(), )
-		await addImage(uuid(), imgs[0].file);
+		let { name, source, description, price, category } = formData;
+
+		const productId = uuid();
+		try {
+			await addProduct(productId, name, source, price, description, category);
+			imgs.forEach(async (img) => {
+				try {
+					await addImage(productId, img.file);
+				} catch (error) {
+					console.log('image upload error', error);
+				}
+			});
+		} catch (error) {
+			console.log(error.message);
+		}
 	};
 </script>
 
@@ -62,7 +70,7 @@
 		on:input={handleInput}
 	/>
 	<input type="text" class=" input my-3" placeholder="Price" name="price" on:input={handleInput} />
-	<select name="category" id="">
+	<select name="category" id="" on:change={handleInput}>
 		{#each cateogries as cat}
 			<option value={cat}>{cat}</option>
 		{/each}

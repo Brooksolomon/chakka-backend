@@ -1,7 +1,49 @@
 <script>
 	import {FireFunc} from '../../lib/firebase/firebase'
+	import cartStore from '../../stores/cartStore';
+	import CartProduct from '../../lib/CartProduct.svelte';
 	function submitForm(event) {
 		event.preventDefault();
+	}
+
+	const handleClick = (id, task) => {
+		const newList = $cartStore.cartProducts
+			.filter((product) => !(product.id === id && task === 'decr' && product.amount === 1))
+			.map((product) => {
+				if (product.id === id) {
+					return {
+						...product,
+						amount:
+							task === 'incr'
+								? product.amount + 1
+								: product.amount > 1
+									? product.amount - 1
+									: product.amount
+					};
+				} else {
+					return product;
+				}
+			});
+
+		console.log('newList', newList);
+		localStorage.setItem('cart_list', JSON.stringify(newList));
+		cartStore.update((curr) => {
+			return {
+				...curr,
+				cartProducts: newList
+			};
+		});
+	};
+
+	let subtotal = 0
+	$: {
+		subtotal = 0;
+		$cartStore.cartProducts.map((product) => {
+			subtotal += Number(parseFloat((product.amount * product.price).toFixed(2)));
+		});
+
+		let deci = subtotal.toString().split('.')[1];
+		subtotal = parseFloat(`${Math.floor(subtotal)}.${deci ? deci?.slice(0, 2) : '00'}`);
 	}
 
 </script>
@@ -131,7 +173,23 @@
 		</button>
 		
 	</form>
-
+	<div>
+	{#each $cartStore.cartProducts as prod}
+	<CartProduct product={prod} {handleClick} source="checkout"/>
+	{/each}
+	
+	<div class="subtotal m-20 ml-80 ">
+		<p class="font-light">TOTAL  </p>
+		<p class=" "> ETB {subtotal}</p>
+		</div>
+</div>
 
 </div>
+
+<style>
+	/* .subtotal {
+		display: flex;
+		justify-content: space-evenly;
+	} */
+</style>
 

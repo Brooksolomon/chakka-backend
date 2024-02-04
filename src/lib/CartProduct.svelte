@@ -1,7 +1,7 @@
 <script>
 	export let product;
-
 	export let handleClick;
+	export let source;
 </script>
 
 <div class="container flex m-[1rem]">
@@ -14,19 +14,23 @@
 		<p class=" text-xs">{product.name}</p>
 		<div class="flex justify-between items-center mt-5">
 			<div class=" flex items-center border border-gray-500 rounded-sm">
+				{#if source=="sidebar"}
 				<button
-					on:click={() => handleClick(product.id, 'decr')}
+					on:click={() => handleClick(product.id, 'decr',0)}
 					class="hover:bg-slate-400 transition ease-linear"><span class="m-3">-</span></button
 				>
+				{/if}
 				<p class=" border-r border-l border-gray-500 h-[100%] px-4 font-light">
-					<span class=" ">{product.amount}</span>
+					<input class="w-10 " disabled={source=='checkout'} bind:value={product.amount}  on:change={() => handleClick(product.id,'change',product.amount)}>
 				</p>
+				{#if source=="sidebar"}
 				<button
-					on:click={() => handleClick(product.id, 'incr')}
+					on:click={() => handleClick(product.id, 'incr',0)}
 					class="hover:bg-slate-400 transition ease-linear"><span class=" m-3">+</span></button
 				>
+				{/if}
 			</div>
-			<p class="product-price font-light">ETB {product.price}</p>
+			<p class="product-price font-light">ETB {Number(parseFloat((product.amount * product.price).toFixed(2)))}</p>
 		</div>
 	</div>
 </div>

@@ -5,7 +5,7 @@
 	import uiStore from '../stores/uiStore';
 	import { onMount } from 'svelte';
 
-	const handleClick = (id, task) => {
+	const handleClick = (id, task,value) => {
 		const newList = $cartStore.cartProducts
 			.filter((product) => !(product.id === id && task === 'decr' && product.amount === 1))
 			.map((product) => {
@@ -13,6 +13,7 @@
 					return {
 						...product,
 						amount:
+							task ==='change'?product.amount = value:
 							task === 'incr'
 								? product.amount + 1
 								: product.amount > 1
@@ -80,7 +81,7 @@
 			</p>
 		</div>
 		{#each $cartStore.cartProducts as prod}
-			<CartProduct product={prod} {handleClick} />
+			<CartProduct product={prod} {handleClick} source="sidebar" />
 		{/each}
 	</div>
 
@@ -89,10 +90,20 @@
 			<p class="font-light">SUBTOTAL</p>
 			<p class=" ">ETB {subtotal}</p>
 		</div>
+		<a href="/checkout">
 		<button
 			class="w-full bg-[#d6cb6b] border-none rounded p-[15px] pointer hover:bg-[#b9b063] transition ease-in-out"
+			on:click={() => {
+				uiStore.update((curr) => {
+					return {
+						...curr,
+						sidebarShow: false
+					};
+				});
+			}}
 			>Checkout</button
 		>
+	</a>
 	</div>
 </div>
 

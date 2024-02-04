@@ -6,8 +6,12 @@
 
 	import dashboardStore from '../../stores/dashboardStore';
 	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
+
+	//if(sessionStorage.getItem("loggedin") == null) goto('/login');
+
+
 	
-	if(sessionStorage.getItem("loggedin") == null) goto('/login');
 </script>
 
 <div class=" h-[100%] flex">

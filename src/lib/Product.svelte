@@ -14,20 +14,33 @@
 			};
 		});
 	};
+
+	function generateRandomString(length) {
+		const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+		let randomString = '';
+
+		for (let i = 0; i < length; i++) {
+			const randomIndex = Math.floor(Math.random() * characters.length);
+			randomString += characters.charAt(randomIndex);
+		}
+
+		return randomString;
+	}
+	let modalId = generateRandomString(6);
 </script>
 
 <div class="flex flex-col items-center">
 	<img src={product.images[0]} alt={product.name + ' image '} class=" p-8" />
-	<p class="text-slate-900">{product.name}</p>
+	<p class="text-slate-900">{product.name} | {product.source}</p>
 	<p class=" text-sm font-light tracking-widest text-slate-600">ETB {product.price}</p>
 
 	<button
 		on:click={showModal}
 		class="btn font-light tracking-widest text-xl m-3 w-full bg-[#d6cb6b] border-none rounded p-[10px] pointer hover:bg-[#aea55a] transition ease-in-out text-slate-800"
-		onclick={`my_modal_${product.id}.showModal()`}>VIEW PRODUCT</button
+		onclick={`my_modal_${modalId}.showModal()`}>VIEW PRODUCT</button
 	>
 </div>
 
-<Modal id={product.id}>
+<Modal id={modalId}>
 	<ProductDetails {product} /></Modal
 >

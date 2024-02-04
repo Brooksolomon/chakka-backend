@@ -3,7 +3,7 @@
 	import { v4 as uuid } from 'uuid';
 	const { addProduct, addImage } = FireFunc;
 	let formData = {};
-	const cateogries = ['Cold-Pressed Oils', 'Essential Oils', 'Herbes And Spices'];
+	const cateogries = ['Cold-Pressed Oils', 'Essential Oils', 'Herbs And Spices'];
 	const handleInput = (e) => {
 		formData = {
 			...formData,

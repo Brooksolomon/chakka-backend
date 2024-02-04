@@ -6,21 +6,33 @@
 	import { onMount } from 'svelte';
 	import { FireFunc } from '../../lib/firebase/firebase';
 
-	const { fetchProductWithCategory } = FireFunc;
+	const { fetchProductWithCategory, fetchImageForProduct } = FireFunc;
 	onMount(async () => {
-		const products = await fetchProductWithCategory('Herbs And Spices');
-
-		productStore.update((curr) => {
-			return {
-				...curr,
-				products: products.map((prod) => {
+		const fetchedProducts = await fetchProductWithCategory('Herbs And Spices ');
+		const products = await Promise.all(
+			fetchedProducts.map(async (prod) => {
+				try {
+					const images = await fetchImageForProduct(prod.productID);
 					return {
 						...prod,
-						images: prod.imageURL
+						id: prod.productID,
+						images
 					};
-				})
-			};
-		});
+				} catch (error) {
+					console.log(error);
+				}
+			})
+		);
+		console.log(products);
+		if (products.length) {
+			productStore.update((curr) => {
+				return {
+					...curr,
+					products: products
+				};
+			});
+		}
+		/*  */
 	});
 </script>
 
@@ -34,14 +46,14 @@
 	<div class=" my-9">
 		<p class=" font-light tracking-widest text-3xl my-3">Other Products</p>
 		<div class="grid grid-cols-1 sm:grid-cols-2 w-[60%]">
-			<a href="/cold-pressed-oils" class=""
+			<a data-sveltekit-reload href="/cold-pressed-oils" class=""
 				><button
 					class=" border-2 font-light tracking-widest text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition"
 				>
 					COLD-PRESSED OILS
 				</button></a
 			>
-			<a href="/essential-oils" class=""
+			<a data-sveltekit-reload href="/essential-oils" class=""
 				><button
 					class=" border-2 font-light tracking-widest text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition"
 				>

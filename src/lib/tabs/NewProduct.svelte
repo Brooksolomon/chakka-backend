@@ -2,6 +2,7 @@
 	import { FireFunc } from '../firebase/firebase';
 	import { v4 as uuid } from 'uuid';
 	const { addProduct, addImage } = FireFunc;
+	import { invalidateAll } from '$app/navigation';
 	let formData = {};
 	const cateogries = ['Cold-Pressed Oils', 'Essential Oils', 'Herbs And Spices'];
 	const handleInput = (e) => {
@@ -12,7 +13,6 @@
 	};
 
 	let imgs = [''];
-
 	const handleImgChange = (e, index) => {
 		const file = e.target.files[0];
 		const reader = new FileReader();
@@ -32,10 +32,14 @@
 
 		reader.readAsDataURL(file);
 	};
-
-	const handlePost = async () => {
+	let posted = false;
+	const handlePost = async (event) => {
+		posted = true;
+		setTimeout(()=>{
+			posted=false;
+		},3000)
 		let { name, source, description, price, category } = formData;
-
+		console.log(category)
 		const productId = uuid();
 		try {
 			await addProduct(productId, name, source, price, description, category);
@@ -52,29 +56,43 @@
 	};
 </script>
 
-<form action="" class="flex flex-col mx-2">
+<form action="" class="flex flex-col mx-2 items-center">
 	<p class=" text-center font-extrabold tracking-wider text-xl">New Product</p>
-	<input type="text" class=" input my-3" placeholder="Name" name="name" on:input={handleInput} />
+	<input type="text" class=" input my-3 w-9/12" placeholder="Name" name="name" on:input={handleInput}  />
 	<input
 		type="text"
-		class=" input my-3"
+		class=" input my-3 w-9/12"
 		placeholder="Source"
 		name="source"
 		on:input={handleInput}
 	/>
 	<input
 		type="text"
-		class=" input my-3"
+		class=" input my-3 w-9/12"
 		placeholder="Description"
 		name="description"
 		on:input={handleInput}
 	/>
-	<input type="text" class=" input my-3" placeholder="Price" name="price" on:input={handleInput} />
-	<select name="category" id="" on:change={handleInput}>
+	<input type="text" class=" input my-3 w-9/12" placeholder="Price" name="price" on:input={handleInput} />
+	<div class="relative">
+	<select	name="category" on:change={handleInput}
+					class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+				>
+		<option value="" disabled selected="true">category</option>
 		{#each cateogries as cat}
 			<option value={cat}>{cat}</option>
 		{/each}
 	</select>
+	<div
+	class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+>
+	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+		><path
+			d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+		/></svg
+	>
+		</div>
+	</div>
 	<div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
 		{#each imgs as img, i}
 			{#if img}
@@ -103,6 +121,12 @@
 		>
 	</div>
 </form>
+{#if posted}
+<div role="alert" class="alert alert-success">
+	<svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+	<span>Product has been added!</span>
+  </div>
+{/if}
 
 <style>
 	* {

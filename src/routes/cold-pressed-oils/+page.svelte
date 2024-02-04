@@ -11,11 +11,11 @@
 		const products = await Promise.all(
 			fetchedProducts.map(async (prod) => {
 				try {
-					const images = await fetchImageForProduct(prod.productID);
+					const imageURL = await fetchImageForProduct(prod.productID);
 					return {
 						...prod,
 						id: prod.productID,
-						images
+						imageURL
 					};
 				} catch (error) {
 					console.log(error);

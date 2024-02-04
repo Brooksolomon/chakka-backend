@@ -9,7 +9,6 @@ export const load = async(event)=>{
         })
        if(authed==false)
        {
-        console.log("mo")
         redirect(303,'/login')
        }
        

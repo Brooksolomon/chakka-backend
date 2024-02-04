@@ -1,6 +1,8 @@
 <script>
 	import { FireFunc } from '../../lib/firebase/firebase';
+	import { goto } from '$app/navigation';
 	const { loginFunction } = FireFunc;
+
 
 	let formData = {};
 	const handleLogin = async () => {
@@ -9,6 +11,12 @@
 			return;
 		}
 		const loggedIn = await loginFunction(username, password);
+		if (loggedIn){
+		sessionStorage.setItem("loggedin",true)
+		goto('/dashboard')
+
+		}
+		
 
 		// do whatever
 	};

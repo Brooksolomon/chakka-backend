@@ -5,6 +5,8 @@
 	import ChangePassword from '../../lib/tabs/ChangePassword.svelte';
 
 	import dashboardStore from '../../stores/dashboardStore';
+	import { goto } from '$app/navigation';
+	if(sessionStorage.getItem("loggedin") == null) goto('/login');
 </script>
 
 <div class=" h-[100%] flex">

@@ -171,6 +171,7 @@
 		>
 			Pay now
 		</button>
+		<input type="hidden" value = {subtotal} name="price">
 		
 	</form>
 	<div>
@@ -186,10 +187,4 @@
 
 </div>
 
-<style>
-	/* .subtotal {
-		display: flex;
-		justify-content: space-evenly;
-	} */
-</style>
 

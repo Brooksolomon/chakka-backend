@@ -2,6 +2,7 @@
 	import { FireFunc } from '../../lib/firebase/firebase';
 	import { goto } from '$app/navigation';
 	const { loginFunction } = FireFunc;
+	import loginStore from '../../stores/loginStore.js';
 	let wrong = false;
 
 	let formData = {};
@@ -15,6 +16,7 @@
 		if (loggedIn){
 		sessionStorage.setItem("loggedin",true)
 		goto('/dashboard')
+		loginStore.set(true)
 		wrong = false
 		}
 		else{

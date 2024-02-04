@@ -14,7 +14,6 @@
 		}
 		const loggedIn = await loginFunction(username, password);
 		if (loggedIn){
-		sessionStorage.setItem("loggedin",true)
 		goto('/dashboard')
 		loginStore.set(true)
 		wrong = false

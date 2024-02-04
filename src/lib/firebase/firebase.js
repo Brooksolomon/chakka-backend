@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getStorage, ref, uploadBytes,listAll} from 'firebase/storage'
+import {getStorage, ref, uploadBytes,listAll, getDownloadURL} from 'firebase/storage'
 import {v4} from 'uuid';
 
 import { getAnalytics } from 'firebase/analytics';
@@ -15,6 +15,7 @@ import {
 	where,
 	query
 } from 'firebase/firestore';
+import { response } from "express";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -140,10 +141,19 @@ async function addImage(productID,img)
 async function fetchImageForProuct(productID)
 {
   const imageListRef = ref(storage,String(productID)+'/')
-  const urls = await listAll(imageListRef)
-  console.log(urls) 
+  var URLLIST = []
+  await listAll(imageListRef).then((response)=>
+  response.items.forEach(async(item) =>{
+    getDownloadURL(item).then((url)=>
+    {
+      URLLIST.push(url)
+    })
+  }))
+
+  console.log(URLLIST)
+  
 }
-fetchImageForProuct(1)
+fetchImageForProuct("35e422aa-c22d-4e2a-94bd-21ea7d2f505c")
 
 export const FireFunc = {
 	addProduct: addProduct, //void

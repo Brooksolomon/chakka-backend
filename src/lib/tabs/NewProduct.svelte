@@ -40,7 +40,7 @@
 		console.log(imgs);
 		let { name, source, description, price, cateogry } = formData;
 		//const product = await addProduct(uuid(), )
-		//await addImage(uuid(), imgs[0].file);
+		await addImage(uuid(), imgs[0].file);
 	};
 </script>
 

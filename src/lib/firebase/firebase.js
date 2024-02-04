@@ -153,20 +153,23 @@ async function addImage(productID, img) {
 	console.log(res);
 	console.log('uploaded');
 }
-async function fetchImageForProuct(productID) {
+async function fetchImageForProduct(productID) {
 	const imageListRef = ref(storage, String(productID) + '/');
 	var URLLIST = [];
-	await listAll(imageListRef).then((response) =>
-		response.items.forEach(async (item) => {
-			getDownloadURL(item).then((url) => {
-				URLLIST.push(url);
-			});
+	const response = await listAll(imageListRef);
+
+	await Promise.all(
+		response.items.map(async (item) => {
+			const url = await getDownloadURL(item);
+			URLLIST.push(url);
 		})
 	);
 
 	console.log(URLLIST);
+
+	return URLLIST;
 }
-fetchImageForProuct('35e422aa-c22d-4e2a-94bd-21ea7d2f505c');
+//fetchImageForProduct('35e422aa-c22d-4e2a-94bd-21ea7d2f505c');
 
 export const FireFunc = {
 	addProduct, //void
@@ -178,5 +181,5 @@ export const FireFunc = {
 	addToPending, //void
 	addImage, //void
 	fetchProductWithCategory, //array of objects
-	fetchImageForProuct
+	fetchImageForProduct
 };

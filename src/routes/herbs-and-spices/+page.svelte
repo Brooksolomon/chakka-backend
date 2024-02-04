@@ -6,21 +6,33 @@
 	import { onMount } from 'svelte';
 	import { FireFunc } from '../../lib/firebase/firebase';
 
-	const { fetchProductWithCategory } = FireFunc;
+	const { fetchProductWithCategory, fetchImageForProduct } = FireFunc;
 	onMount(async () => {
-		const products = await fetchProductWithCategory('Herbs And Spices');
-
-		productStore.update((curr) => {
-			return {
-				...curr,
-				products: products.map((prod) => {
+		const fetchedProducts = await fetchProductWithCategory('Herbs And Spices ');
+		const products = await Promise.all(
+			fetchedProducts.map(async (prod) => {
+				try {
+					const images = await fetchImageForProduct(prod.productID);
 					return {
 						...prod,
-						images: prod.imageURL
+						id: prod.productID,
+						images
 					};
-				})
-			};
-		});
+				} catch (error) {
+					console.log(error);
+				}
+			})
+		);
+		console.log(products);
+		if (products.length) {
+			productStore.update((curr) => {
+				return {
+					...curr,
+					products: products
+				};
+			});
+		}
+		/*  */
 	});
 </script>
 

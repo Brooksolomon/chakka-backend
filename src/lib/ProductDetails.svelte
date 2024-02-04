@@ -4,6 +4,7 @@
 	import cartStore from '../stores/cartStore';
 	let amount = 0;
 	export let product;
+
 	const handleAddToCart = () => {
 		cartStore.update((curr) => {
 			return {

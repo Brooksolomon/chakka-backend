@@ -6,6 +6,7 @@
 
 	import dashboardStore from '../../stores/dashboardStore';
 	import { goto } from '$app/navigation';
+	
 	if(sessionStorage.getItem("loggedin") == null) goto('/login');
 </script>
 

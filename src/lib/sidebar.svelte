@@ -13,7 +13,7 @@
 					return {
 						...product,
 						amount:
-							task ==='change'?product.amount = value:
+							task ==='change'? Number(value):
 							task === 'incr'
 								? product.amount + 1
 								: product.amount > 1

@@ -1,9 +1,10 @@
 <script>
 	import { FireFunc } from '../../lib/firebase/firebase';
 	import { goto } from '$app/navigation';
-	const { loginFunction } = FireFunc;
+	const { loginFunction, fetchAdmin } = FireFunc;
 	import loginStore from '../../stores/loginStore.js';
 	import { onMount } from 'svelte';
+
 	let wrong = false;
 
 	let formData = {};
@@ -30,6 +31,12 @@
 			[e.target.name]: e.target.value
 		};
 	};
+
+	onMount(async () => {
+		const admin = await fetchAdmin();
+
+		console.log(admin);
+	});
 </script>
 
 <div class="rounded flex flex-col p-5 items-center justify-center">

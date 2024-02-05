@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getStorage, ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
+import { updateDoc } from 'firebase/firestore';
 import { v4 } from 'uuid';
 
 import { getAnalytics } from 'firebase/analytics';
@@ -90,6 +91,13 @@ async function loginFunction(username, password) {
 		return false;
 	}
 }
+async function fetchAdmin() {
+	const mydoc = await getDoc(doc(db, 'auth', 'admin'));
+	const mydata = mydoc.data();
+
+	return mydata;
+}
+
 async function changeAdminInformation(username, password) {
 	await setDoc(doc(db, 'auth', 'admin'), {
 		username: username,
@@ -97,6 +105,11 @@ async function changeAdminInformation(username, password) {
 	});
 }
 
+async function updateProduct(productID, updatedData) {
+	const documentRef = doc(db, 'products', String(productID));
+	await updateDoc(documentRef, updatedData);
+	console.log('Document successfully updated.');
+}
 async function addToPending(
 	txnReference,
 	firstName,
@@ -148,5 +161,7 @@ export const FireFunc = {
 	addToPending, //void
 	addImage, //void
 	fetchProductWithCategory, //array of objects
-	fetchImageForProduct
+	fetchImageForProduct,
+	fetchAdmin,
+	updateProduct
 };

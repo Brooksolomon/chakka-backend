@@ -39,5 +39,6 @@ export default writable({
 		// }
 	],
 	categories: [],
-	activeProduct: null
+	activeProduct: null,
+	allProducts: []
 });

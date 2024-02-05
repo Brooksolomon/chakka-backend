@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	const { loginFunction } = FireFunc;
 	import loginStore from '../../stores/loginStore.js';
+	import { onMount } from 'svelte';
 	let wrong = false;
 
 	let formData = {};
@@ -13,15 +14,13 @@
 			return;
 		}
 		const loggedIn = await loginFunction(username, password);
-		if (loggedIn){
-		goto('/dashboard')
-		loginStore.set(true)
-		wrong = false
+		if (loggedIn) {
+			goto('/dashboard');
+			loginStore.set(true);
+			wrong = false;
+		} else {
+			wrong = true;
 		}
-		else{
-			wrong = true
-		}
-		
 
 		// do whatever
 	};
@@ -49,7 +48,7 @@
 		on:input={handleChange}
 		type="password"
 		id=""
-		class="input  m-3 {wrong ? 'bg-red-400' : 'bg-white-300'} w-64"
+		class="input m-3 {wrong ? 'bg-red-400' : 'bg-white-300'} w-64"
 		name="password"
 		placeholder="Enter password"
 	/>

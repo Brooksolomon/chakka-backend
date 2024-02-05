@@ -37,7 +37,7 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 
 async function addProduct(productID, name, source, price, description, category) {
-	console.log(productID,name,source,price,description,category)
+	console.log(productID, name, source, price, description, category);
 	await setDoc(doc(db, 'products', String(productID)), {
 		productID: productID,
 		name: name,
@@ -133,7 +133,6 @@ async function fetchImageForProduct(productID) {
 			URLLIST.push(url);
 		})
 	);
-
 
 	return URLLIST;
 }

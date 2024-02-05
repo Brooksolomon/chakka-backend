@@ -5,7 +5,6 @@
 	import cartStore from '../stores/cartStore';
 	import uiStore from '../stores/uiStore';
 	import Sidebar from '../lib/Sidebar.svelte';
-	
 
 	onMount(() => {
 		if (window) {
@@ -19,12 +18,10 @@
 			});
 		}
 	});
-	
-
 </script>
 
 <Navbar />
-<div class="bg-[#f7f3ec] pt-[15vh] md:pt-[25vh] px-[5%]">
+<div class="bg-[#f7f3ec] pt-[15vh] md:pt-[25vh] px-[5%] min-h-[100vh]">
 	<slot />
 </div>
 

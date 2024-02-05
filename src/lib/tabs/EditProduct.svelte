@@ -10,12 +10,16 @@
 
 	onMount(() => {});
 	let loading = false;
-	const handleCatChange = async () => {
+	const handleCategoryChange = async () => {
+		products = [];
+		loading = true;
 		const fetchedProducts = await fetchProductWithCategory(selectedCat);
 		products = await Promise.all(
 			fetchedProducts.map(async (prod) => {
 				try {
 					const imageURL = await fetchImageForProduct(prod.productID);
+
+					loading = false;
 					return {
 						...prod,
 						id: prod.productID,
@@ -37,7 +41,7 @@
 		name=""
 		id=""
 		class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-		on:change={handleCatChange}
+		on:change={handleCategoryChange}
 	>
 		<option value="">Select Product</option>
 		{#each categories as cat}
@@ -52,5 +56,5 @@
 		<div class="skeleton w-[100%] h-[2rem] rounded mt-3"></div>
 	{/if}
 
-	<ProductAccordion {products} />
+	<ProductAccordion {products} {handleCategoryChange} {loading} />
 </div>

@@ -1,7 +1,7 @@
 <script>
 	import Product from '../../lib/Product.svelte';
 	import productStore from '../../stores/productStore';
-	import { ShoppingCartSimple } from 'phosphor-svelte';
+	import { ShoppingCart } from 'phosphor-svelte';
 	import uiStore from '../../stores/uiStore';
 	import { onMount } from 'svelte';
 	import { FireFunc } from '../../lib/firebase/firebase';

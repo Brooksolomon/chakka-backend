@@ -1,7 +1,8 @@
 <script>
 	import Product from '../../lib/Product.svelte';
 	import productStore from '../../stores/productStore';
-	import { ShoppingCartSimple } from 'phosphor-svelte';
+	import { ShoppingCart } from 'phosphor-svelte';
+	import cartStore from '../../stores/cartStore';
 	import uiStore from '../../stores/uiStore';
 	import { onMount } from 'svelte';
 	import { FireFunc } from '../../lib/firebase/firebase';
@@ -34,10 +35,23 @@
 		}
 		/*  */
 	});
+
+	let cartCount = 0;
+	$: {
+		cartCount = 0;
+		$cartStore.cartProducts.map((product) => {
+			cartCount += Number(product.amount) ;
+		});
+	}
 </script>
 
 <div class=" text-slate-800 my-8">
 	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-40 px-[7vw]">
+		{#if !$productStore.products.length }
+		<div class="skeleton w-62 h-96"></div>
+		<div class="skeleton w-62 h-96"></div>
+		<div class="skeleton w-62 h-96"></div>
+		{/if}
 		{#each $productStore.products as product}
 			<Product {product} />
 		{/each}
@@ -64,16 +78,20 @@
 	</div>
 </div>
 
+
 <div
-	on:click={() => {
-		uiStore.update((curr) => {
-			return {
-				...curr,
-				sidebarShow: true
-			};
-		});
-	}}
-	class=" w-10 h-10 border border-slate-500 fixed right-2 top-[90%] flex items-center justify-center rounded-full"
->
-	<ShoppingCartSimple color="#1e2938" class="" weight="fill" size={20} />
+on:click={() => {
+	uiStore.update((curr) => {
+		return {
+			...curr,
+			sidebarShow: true
+		};
+	});
+}}
+					class=" w-12 h-16 items-center   fixed right-2 top-[45%] flex flex-col w-fit gap-1 rounded-md bg-[#d6cb6b] p-1 px-2 rounded-full">
+					<large> {cartCount}</large>
+					<ShoppingCart color="#1e2938" class="" weight="thin" size={30}  />
+					
 </div>
+	
+

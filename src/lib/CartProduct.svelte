@@ -2,12 +2,13 @@
 	export let product;
 	export let handleClick;
 	export let source;
+	
 </script>
 
 <div class="container flex m-[1rem]">
 	<img
 		class=" w-[65px] h-[100px] object-cover"
-		src={product.images[0]}
+		src={product.imageURL[0]}
 		alt={product.name + ' image '}
 	/>
 	<div class=" m-l-[1rem] w-full m-3">
@@ -21,7 +22,7 @@
 				>
 				{/if}
 				<p class=" border-r border-l border-gray-500 h-[100%] px-4 font-light">
-					<input class="w-10 " disabled={source=='checkout'} bind:value={product.amount}  on:change={() => handleClick(product.id,'change',product.amount)}>
+					<input class="w-7	text-center " disabled={source=='checkout'} bind:value={product.amount}  on:change={() => handleClick(product.id,'change',product.amount)}>
 				</p>
 				{#if source=="sidebar"}
 				<button

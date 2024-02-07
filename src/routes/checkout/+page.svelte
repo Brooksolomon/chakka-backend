@@ -46,6 +46,8 @@
 		subtotal = parseFloat(`${Math.floor(subtotal)}.${deci ? deci?.slice(0, 2) : '00'}`);
 	}
 
+	
+
 </script>
 
 <div class="flex items-center justify-center h-screen">
@@ -172,6 +174,7 @@
 			Pay now
 		</button>
 		<input type="hidden" value = {subtotal} name="price">
+		
 		
 	</form>
 	<div>

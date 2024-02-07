@@ -33,11 +33,11 @@ export const actions = {
         txnReference = response["tx_ref"];
         url = response["data"]["checkout_url"];
         //$cartStore.cartProducts
-        let authed = false;
+        let prods = [];
         cartStore.subscribe(v => {
-            authed = v.cartProducts
+            prods = v.cartProducts
         })
-        console.log(authed)
+        console.log(prods)
        // FireFunc.addToPending(txnReference,firstName,lastName,email,city,subCity,description,)
 
         

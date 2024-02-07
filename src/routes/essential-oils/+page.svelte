@@ -40,17 +40,17 @@
 	$: {
 		cartCount = 0;
 		$cartStore.cartProducts.map((product) => {
-			cartCount += Number(product.amount) ;
+			cartCount += Number(product.amount);
 		});
 	}
 </script>
 
 <div class=" text-slate-800 my-8">
-	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-40 px-[7vw]">
-		{#if !$productStore.products.length }
-		<div class="skeleton w-62 h-96"></div>
-		<div class="skeleton w-62 h-96"></div>
-		<div class="skeleton w-62 h-96"></div>
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-40">
+		{#if !$productStore.products.length}
+			<div class="skeleton w-62 h-96"></div>
+			<div class="skeleton w-62 h-96"></div>
+			<div class="skeleton w-62 h-96"></div>
 		{/if}
 		{#each $productStore.products as product}
 			<Product {product} />
@@ -58,18 +58,22 @@
 	</div>
 
 	<div class=" my-9">
-		<p class=" font-light tracking-widest text-3xl my-3">Other Products</p>
-		<div class="grid grid-cols-1 sm:grid-cols-2 w-[60%]">
-			<a data-sveltekit-reload href="/cold-pressed-oils" class=""
+		<p class=" font-light tracking-widest text-3xl my-3 text-center md:text-right">
+			Other Products
+		</p>
+		<div
+			class=" flex items-center flex-col md:flex-row md:justify-between md:w-[90%] lg:w-[70%] xl:w-[60%]"
+		>
+			<a data-sveltekit-reload class=" my-3" href="/cold-pressed-oils"
 				><button
-					class=" border-2 font-light tracking-widest text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition"
+					class=" w-[20rem] sm:w-[20rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[8rem]"
 				>
 					COLD-PRESSED OILS
 				</button></a
 			>
-			<a data-sveltekit-reload href="/herbs-and-spices"
+			<a data-sveltekit-reload class=" my-3" href="/herbs-and-spices"
 				><button
-					class=" border-2 font-light tracking-widest text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition"
+					class=" border-2 font-light tracking-widest text-xl md:text-2xl w-[20rem] sm:w-[20rem] border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[8rem]"
 				>
 					HERBS AND SPICES
 				</button></a
@@ -78,20 +82,17 @@
 	</div>
 </div>
 
-
 <div
-on:click={() => {
-	uiStore.update((curr) => {
-		return {
-			...curr,
-			sidebarShow: true
-		};
-	});
-}}
-					class=" w-12 h-16 items-center   fixed right-2 top-[45%] flex flex-col w-fit gap-1 rounded-md bg-[#d6cb6b] p-1 px-2 rounded-full">
-					<large> {cartCount}</large>
-					<ShoppingCart color="#1e2938" class="" weight="thin" size={30}  />
-					
+	on:click={() => {
+		uiStore.update((curr) => {
+			return {
+				...curr,
+				sidebarShow: true
+			};
+		});
+	}}
+	class=" w-12 h-16 items-center fixed right-2 top-[45%] flex flex-col w-fit gap-1 rounded-md bg-[#d6cb6b] p-1 px-2 rounded-full"
+>
+	<large> {cartCount}</large>
+	<ShoppingCart color="#1e2938" class="" weight="thin" size={30} />
 </div>
-	
-

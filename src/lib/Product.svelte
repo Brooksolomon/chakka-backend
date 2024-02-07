@@ -28,12 +28,12 @@
 	}
 	let modalId = generateRandomString(6);
 
-	console.log(product)
+	console.log(product);
 </script>
 
 <div class="flex flex-col items-center">
 	<img src={product.imageURL[0]} alt={product.name + ' image '} class=" p-8" />
-	<p class="text-slate-900">{product.name} | {product.source}</p>
+	<p class="text-slate-900 text-center">{product.name} | {product.source}</p>
 	<p class=" text-sm font-light tracking-widest text-slate-600">ETB {product.price}</p>
 
 	<button

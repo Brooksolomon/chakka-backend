@@ -17,7 +17,7 @@
 	};
 </script>
 
-<form action="" class="flex flex-col px-[20rem]">
+<form action="" class="flex flex-col px-[5rem] md:px-[3rem] lg:px-[10rem] xl:px-[15rem]">
 	<p class=" font-extrabold text-xl text-center">Change Password</p>
 	<input type="text" placeholder="Username" class="input my-5" bind:value={formData.username} />
 	<input type="text" placeholder="New Password" class="input my-5" bind:value={formData.password} />

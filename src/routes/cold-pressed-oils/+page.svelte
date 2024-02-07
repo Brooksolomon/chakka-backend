@@ -45,7 +45,7 @@
 </script>
 
 <div class=" text-slate-800 my-8">
-	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-40 px-[7vw]">
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-40">
 		{#if !$productStore.products.length}
 			<div class="skeleton w-62 h-96"></div>
 			<div class="skeleton w-62 h-96"></div>
@@ -57,18 +57,22 @@
 	</div>
 
 	<div class=" my-9">
-		<p class=" font-light tracking-widest text-3xl my-3">Other Products</p>
-		<div class="grid grid-cols-1 sm:grid-cols-2 w-[60%]">
-			<a href="/essential-oils" class=""
+		<p class=" font-light tracking-widest text-3xl my-3 text-center md:text-right">
+			Other Products
+		</p>
+		<div
+			class=" flex items-center flex-col md:flex-row md:justify-between md:w-[90%] lg:w-[70%] xl:w-[60%]"
+		>
+			<a href="/essential-oils" data-sveltekit-reload class=" my-3"
 				><button
-					class=" border-2 font-light tracking-widest text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition"
+					class=" w-[20rem] sm:w-[20rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[8rem]"
 				>
 					ESSENTIAL OILS
 				</button></a
 			>
-			<a href="/herbs-and-spices"
+			<a href="/herbs-and-spices" data-sveltekit-reload class=" my-3"
 				><button
-					class=" border-2 font-light tracking-widest text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition"
+					class=" border-2 font-light tracking-widest text-xl md:text-2xl w-[20rem] sm:w-[20rem] border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[8rem]"
 				>
 					HERBS AND SPICES
 				</button></a

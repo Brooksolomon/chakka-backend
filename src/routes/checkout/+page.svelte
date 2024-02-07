@@ -1,5 +1,5 @@
 <script>
-	import {FireFunc} from '../../lib/firebase/firebase'
+	import { FireFunc } from '../../lib/firebase/firebase';
 	import cartStore from '../../stores/cartStore';
 	import CartProduct from '../../lib/CartProduct.svelte';
 	function submitForm(event) {
@@ -35,7 +35,7 @@
 		});
 	};
 
-	let subtotal = 0
+	let subtotal = 0;
 	$: {
 		subtotal = 0;
 		$cartStore.cartProducts.map((product) => {
@@ -45,7 +45,6 @@
 		let deci = subtotal.toString().split('.')[1];
 		subtotal = parseFloat(`${Math.floor(subtotal)}.${deci ? deci?.slice(0, 2) : '00'}`);
 	}
-
 </script>
 
 <div class="flex items-center justify-center h-screen">
@@ -171,20 +170,16 @@
 		>
 			Pay now
 		</button>
-		<input type="hidden" value = {subtotal} name="price">
-		
+		<input type="hidden" value={subtotal} name="price" />
 	</form>
 	<div>
-	{#each $cartStore.cartProducts as prod}
-	<CartProduct product={prod} {handleClick} source="checkout"/>
-	{/each}
-	
-	<div class="subtotal m-20 ml-80 ">
-		<p class="font-light">TOTAL  </p>
-		<p class=" "> ETB {subtotal}</p>
+		{#each $cartStore.cartProducts as prod}
+			<CartProduct product={prod} {handleClick} source="checkout" />
+		{/each}
+
+		<div class="subtotal m-20 ml-80">
+			<p class="font-light">TOTAL</p>
+			<p class=" ">ETB {subtotal}</p>
 		</div>
+	</div>
 </div>
-
-</div>
-
-

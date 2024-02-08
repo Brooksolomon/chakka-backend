@@ -47,9 +47,9 @@
 	}
 </script>
 
-<div class="flex items-center justify-center h-screen">
+<div class="flex items-center justify-center h-screen flex-col-reverse lg:flex-row">
 	<form class="w-full max-w-lg" method="post" action="?/paymentInit">
-		<h1 class="text-4xl my-10 mx-4">chakka origins payment detail</h1>
+		<h1 class="text-4xl my-10 mx-4 text-center">chakka origins payment detail</h1>
 		<div class="flex flex-wrap -mx-3 mb-6">
 			<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 				<input
@@ -164,12 +164,14 @@
 				></textarea>
 			</div>
 		</div>
-		<button
-			class="bg-transparent hover:bg-blue-500 text-blue-700 font-extrabold hover:text-white py-2 px-4 ml-48 border border-blue-500 hover:border-transparent rounded"
-			type="submit"
-		>
-			Pay now
-		</button>
+		<div class=" w-full bg-red-500 flex items-center">
+			<button
+				class="bg-transparent hover:bg-blue-500 text-blue-700 font-extrabold hover:text-white py-2 px-4 ml-48 border border-blue-500 hover:border-transparent rounded"
+				type="submit"
+			>
+				Pay now
+			</button>
+		</div>
 		<input type="hidden" value={subtotal} name="price" />
 	</form>
 	<div>

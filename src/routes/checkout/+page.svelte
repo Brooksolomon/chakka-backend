@@ -47,9 +47,11 @@
 	}
 </script>
 
-<div class="flex items-center justify-center h-screen flex-col-reverse lg:flex-row">
+<div
+	class="flex items-center justify-center h-screen flex-col-reverse lg:flex-row mt-[30vh] lg:mt-0"
+>
 	<form class="w-full max-w-lg" method="post" action="?/paymentInit">
-		<h1 class="text-4xl my-10 mx-4 text-center">chakka origins payment detail</h1>
+		<h1 class="text-4xl my-10 mx-4 text-center font-semibold">Chakka origins payment detail</h1>
 		<div class="flex flex-wrap -mx-3 mb-6">
 			<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 				<input
@@ -164,22 +166,35 @@
 				></textarea>
 			</div>
 		</div>
-		<div class=" w-full bg-red-500 flex items-center">
-			<button
-				class="bg-transparent hover:bg-blue-500 text-blue-700 font-extrabold hover:text-white py-2 px-4 ml-48 border border-blue-500 hover:border-transparent rounded"
-				type="submit"
-			>
-				Pay now
-			</button>
+		<div class=" w-full flex items-center justify-center">
+			<button class=" btn btn-neutral px-10" type="submit"> Pay now </button>
 		</div>
 		<input type="hidden" value={subtotal} name="price" />
 	</form>
-	<div>
-		{#each $cartStore.cartProducts as prod}
-			<CartProduct product={prod} {handleClick} source="checkout" />
-		{/each}
-
-		<div class="subtotal m-20 ml-80">
+	<div class=" mx-6 w-full lg:w-1/2">
+		<ul class="menu menu-sm bg-base-200 rounded-box">
+			{#each $cartStore.cartProducts as prod}
+				<li class=" ">
+					<div class="  m-3 p-3">
+						<img
+							class=" w-[65px] h-[100px] object-cover"
+							src={prod.imageURL[0]}
+							alt={prod.name + ' image '}
+						/>
+						<div class=" px-3 w-full flex flex-col justify-between h-full py-2">
+							<p>{prod.name}</p>
+							<div class=" flex justify-between">
+								<p>ETB {prod.price}</p>
+								<p class="badge badge-neutral rounded">
+									{prod.amount} piece{prod.amount === 1 ? '' : 's'}
+								</p>
+							</div>
+						</div>
+					</div>
+				</li>
+			{/each}
+		</ul>
+		<div class="subtotal text-center mt-4">
 			<p class="font-light">TOTAL</p>
 			<p class=" ">ETB {subtotal}</p>
 		</div>

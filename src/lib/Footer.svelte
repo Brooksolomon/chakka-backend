@@ -1,4 +1,4 @@
-<footer class="footer p-10 text-base-content w-[100vw] bg-[#bb942e]">
+<footer class="footer p-[10rem] text-base-content w-[100vw] bg-[#bb942e]">
 	<nav>
 		<h6 class="footer-title">Services</h6>
 		<a href="/" class="link link-hover">Home</a>

@@ -106,9 +106,7 @@
 	</div>
 
 	<div class=" my-9">
-		<p class=" font-light tracking-widest text-3xl my-3 text-center md:text-right">
-			Other Products
-		</p>
+		<p class=" font-light tracking-widest text-3xl my-3 text-center md:text-left">Other Products</p>
 		<div
 			class=" flex items-center flex-col md:flex-row md:justify-between md:w-[90%] lg:w-[70%] xl:w-[60%]"
 		>

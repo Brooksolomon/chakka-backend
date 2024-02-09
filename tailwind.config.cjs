@@ -2,7 +2,11 @@
 module.exports = {
 	content: ['./src/**/*.svelte'],
 	theme: {
-		extend: {}
+		extend: {
+			fontFamily: {
+				montserrat: ['Montserrat']
+			}
+		}
 	},
 	daisyui: {
 		themes: ['light']

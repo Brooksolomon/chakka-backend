@@ -1,21 +1,21 @@
 <footer class="footer p-10 text-base-content w-[100vw] bg-[#bb942e]">
 	<nav>
 		<h6 class="footer-title">Services</h6>
-		<a class="link link-hover">Home</a>
+		<a href="/" class="link link-hover">Home</a>
 		<a class="link link-hover">Products</a>
-		<a class="link link-hover">Plants</a>
-		<a class="link link-hover">Sustainable Source </a>
-		<a class=" link link-hover">About</a>
-		<a href="" class=" link link-hover">Contact</a>
+		<a href="/plants" class="link link-hover">Plants</a>
+		<a href="/sustainable-source" class="link link-hover">Sustainable Source </a>
+		<a href="/about" class=" link link-hover">About</a>
+		<a href="/contact" class=" link link-hover">Contact</a>
 	</nav>
 
 	<nav>
 		<h6 class="footer-title">Customer Care</h6>
-		<a class="link link-hover">Shipping & Returns</a>
-		<a class="link link-hover">Stockists</a>
-		<a class="link link-hover">FAQs</a>
-		<a class="link link-hover">Terms of Use</a>
-		<a href="" class="link link-hover"> Privacy Policy </a>
+		<a href="/shipping-returns" class="link link-hover">Shipping & Returns</a>
+		<a href="/stockists" class="link link-hover">Stockists</a>
+		<a href="/faqs" class="link link-hover">FAQs</a>
+		<a href="/terms-of-use" class="link link-hover">Terms of Use</a>
+		<a href="/privacy-policy" class="link link-hover"> Privacy Policy </a>
 	</nav>
 
 	<nav>

@@ -148,8 +148,10 @@ async function fetchImageForProduct(productID) {
 	return URLLIST;
 }
 
+
+
 async function fetchAllCompletedOrders() {
-	const pr = collection(db, 'products','verified');
+	const pr = collection(db, 'verified');
 	const q = query(pr, where('completed', '==', true));
 	const querySnapshot = await getDocs(q);
 	const AllProducts = [];
@@ -159,7 +161,7 @@ async function fetchAllCompletedOrders() {
 	return AllProducts;
 }
 async function fetchAllIncompletedOrders() {
-	const pr = collection(db, 'products','verified');
+	const pr = collection(db, 'verified');
 	const q = query(pr, where('completed', '==', false));
 	const querySnapshot = await getDocs(q);
 	const AllProducts = [];
@@ -170,7 +172,7 @@ async function fetchAllIncompletedOrders() {
 }
 async function completeOrder(txnReference)
 {
-	const docref = doc(db, "verified", String(txnReference));
+	const docref = doc(db, 'verified', String(txnReference));
 	await updateDoc(docref, {
 	completed: true
 	});

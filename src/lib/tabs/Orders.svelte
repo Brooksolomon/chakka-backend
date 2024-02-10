@@ -1,18 +1,47 @@
 <script>
 	import { onMount } from 'svelte';
 	import { FireFunc } from '../firebase/firebase';
-	const { fetchAllVerifiedProducts, deleteVerified } = FireFunc;
+	const { fetchAllCompletedOrders, fetchAllIncompletedOrders, completeOrder } = FireFunc;
 
+	let completedOrders = [];
+	let incompleteOrders = [];
+	let mode = '';
 	let orders = [];
+	onMount(async () => {});
 
-	onMount(async () => {
-		orders = await fetchAllVerifiedProducts();
+	const handleModeChange = async (e) => {
+		mode = e.target.value;
 
-		console.log(orders);
-	});
+		if (mode === 'complete' && !completedOrders.length) {
+			completedOrders = await fetchAllCompletedOrders();
+			orders = completedOrders;
+		} else if (mode === 'incomplete' && !incompleteOrders.length) {
+			incompleteOrders = await fetchAllIncompletedOrders();
+			orders = incompleteOrders;
+		} else if (mode === 'complete') {
+			orders = completedOrders;
+		} else if (mode === 'incomplete') {
+			orders = incompleteOrders;
+		} else {
+			return;
+		}
+	};
+
+	const handleCompleteOrder = async (txn) => {
+		try {
+			await completeOrder(txn);
+		} catch (error) {
+			console.log('error completing order', error.message);
+		}
+	};
 </script>
 
 <div>
+	<select name="" id="" on:change={handleModeChange} class=" select select-warning">
+		<option value="complete">See Completed</option>
+		<option value="incomplete">See Incomplete</option>
+	</select>
+
 	{#each orders as order}
 		<div class="collapse collapse-plus bg-base-200">
 			<input type="radio" name="my-accordion-3" />
@@ -36,7 +65,12 @@
 						</li>
 					{/each}
 				</ul>
-				<button class=" btn btn-neutral btn-sm my-4 mx-5">Delete It</button>
+				{#if order.completed === false}
+					<button
+						on:click={async () => await handleCompleteOrder(order.txnReference)}
+						class=" btn btn-neutral btn-sm my-4 mx-5">Mark as complete</button
+					>
+				{/if}
 			</div>
 		</div>
 	{/each}

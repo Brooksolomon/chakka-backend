@@ -3,7 +3,7 @@
 	import EditProduct from '../../lib/tabs/EditProduct.svelte';
 	import NewProduct from '../../lib/tabs/NewProduct.svelte';
 	import ChangePassword from '../../lib/tabs/ChangePassword.svelte';
-
+	import Orders from '../../lib/tabs/Orders.svelte';
 	import dashboardStore from '../../stores/dashboardStore';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
@@ -11,7 +11,7 @@
 	//if(sessionStorage.getItem("loggedin") == null) goto('/login');
 </script>
 
-<div class=" h-[100%] flex flex-col items-center md:flex-row">
+<div class=" h-[100%] flex flex-col items-center md:items-baseline md:flex-row">
 	<div class="dashboard-left flex-[0.1] mb-5">
 		<TabList />
 	</div>
@@ -22,6 +22,8 @@
 			<EditProduct />
 		{:else if $dashboardStore.openTab === 'changePassword'}
 			<ChangePassword />
+		{:else if $dashboardStore.openTab === 'orders'}
+			<Orders />
 		{/if}
 	</div>
 </div>

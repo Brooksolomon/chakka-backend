@@ -35,11 +35,11 @@
 	let posted = false;
 	const handlePost = async (event) => {
 		posted = true;
-		setTimeout(()=>{
-			posted=false;
-		},3000)
+		setTimeout(() => {
+			posted = false;
+		}, 3000);
 		let { name, source, description, price, category } = formData;
-		console.log(category)
+		console.log(category);
 		const productId = uuid();
 		try {
 			await addProduct(productId, name, source, price, description, category);
@@ -58,7 +58,13 @@
 
 <form action="" class="flex flex-col mx-2 items-center">
 	<p class=" text-center font-extrabold tracking-wider text-xl">New Product</p>
-	<input type="text" class=" input my-3 w-9/12" placeholder="Name" name="name" on:input={handleInput}  />
+	<input
+		type="text"
+		class=" input my-3 w-9/12"
+		placeholder="Name"
+		name="name"
+		on:input={handleInput}
+	/>
 	<input
 		type="text"
 		class=" input my-3 w-9/12"
@@ -73,24 +79,32 @@
 		name="description"
 		on:input={handleInput}
 	/>
-	<input type="text" class=" input my-3 w-9/12" placeholder="Price" name="price" on:input={handleInput} />
+	<input
+		type="text"
+		class=" input my-3 w-9/12"
+		placeholder="Price"
+		name="price"
+		on:input={handleInput}
+	/>
 	<div class="relative">
-	<select	name="category" on:change={handleInput}
-					class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-				>
-		<option value="" disabled selected="true">category</option>
-		{#each cateogries as cat}
-			<option value={cat}>{cat}</option>
-		{/each}
-	</select>
-	<div
-	class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
->
-	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-		><path
-			d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-		/></svg
-	>
+		<select
+			name="category"
+			on:change={handleInput}
+			class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+		>
+			<option value="" disabled selected="true">category</option>
+			{#each cateogries as cat}
+				<option value={cat}>{cat}</option>
+			{/each}
+		</select>
+		<div
+			class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+		>
+			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+				><path
+					d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+				/></svg
+			>
 		</div>
 	</div>
 	<div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
@@ -101,7 +115,7 @@
 				<input
 					on:change={(e) => handleImgChange(e, i)}
 					type="file"
-					class="file-input file-input-bordered w-full max-w-xs my-4"
+					class="file-input file-input-bordered my-4 w-[20rem] mx-[8rem]"
 				/>
 			{/if}
 		{/each}
@@ -122,10 +136,21 @@
 	</div>
 </form>
 {#if posted}
-<div role="alert" class="alert alert-success">
-	<svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-	<span>Product has been added!</span>
-  </div>
+	<div role="alert" class="alert alert-success">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="stroke-current shrink-0 h-6 w-6"
+			fill="none"
+			viewBox="0 0 24 24"
+			><path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+			/></svg
+		>
+		<span>Product has been added!</span>
+	</div>
 {/if}
 
 <style>

@@ -1,5 +1,5 @@
 <script>
-	import { PlusCircle, PencilLine, Password } from 'phosphor-svelte';
+	import { PlusCircle, PencilLine, Password, ShoppingBag } from 'phosphor-svelte';
 	import dashboardStore from '../stores/dashboardStore';
 
 	const returnTabClass = (tabName) => {
@@ -31,6 +31,12 @@
 		<a class={$dashboardStore.openTab === 'editProduct' ? selectedTabClass : ''}>
 			<PencilLine />
 			Edit Product
+		</a>
+	</li>
+	<li class="p-3" on:click={() => changeTab('orders')}>
+		<a class={$dashboardStore.openTab === 'orders' ? selectedTabClass : ''}>
+			<ShoppingBag />
+			Orders
 		</a>
 	</li>
 	<li class="p-3" on:click={() => changeTab('changePassword')}>

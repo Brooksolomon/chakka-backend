@@ -49,7 +49,7 @@ async function addProduct(productID, name, source, price, description, category)
 	});
 }
 async function deleteProduct(productID) {
-	await await deleteDoc(doc(db, 'products', String(productID)));
+	 await deleteDoc(doc(db, 'products', String(productID)));
 }
 
 async function fetchSpecificProuct(productID) {
@@ -66,7 +66,6 @@ async function fetchAllProducts() {
 	querySnapshot.forEach((doc) => {
 		AllProducts.push(doc.data());
 	});
-	console.log(AllProducts);
 	return AllProducts;
 }
 async function fetchProductWithCategory(category) {
@@ -77,14 +76,12 @@ async function fetchProductWithCategory(category) {
 	querySnapshot.forEach((doc) => {
 		AllProducts.push(doc.data());
 	});
-	console.log(AllProducts);
 
 	return AllProducts;
 }
 async function loginFunction(username, password) {
 	const mydoc = await getDoc(doc(db, 'auth', 'admin'));
 	const mydata = mydoc.data();
-	console.log(username, mydata.username, password, mydata.password);
 	if (username == mydata.username && password == mydata.password) {
 		return true;
 	} else {
@@ -152,6 +149,20 @@ async function fetchImageForProduct(productID) {
 	return URLLIST;
 }
 
+async function fetchAllVerifiedProducts() {
+	const querySnapshot = await getDocs(collection(db, 'verified'));
+	const AllProducts = [];
+	querySnapshot.forEach((doc) => {
+		AllProducts.push(doc.data());
+	});
+	return AllProducts;
+}
+async function deleteVerified(productID) {
+	await deleteDoc(doc(db, 'verified', String(productID)));
+}
+
+
+
 export const FireFunc = {
 	addProduct, //void
 	deleteProduct, //void
@@ -164,5 +175,8 @@ export const FireFunc = {
 	fetchProductWithCategory, //array of objects
 	fetchImageForProduct,
 	fetchAdmin,
-	updateProduct
+	updateProduct,
+	fetchAllVerifiedProducts,
+	deleteVerified
+
 };

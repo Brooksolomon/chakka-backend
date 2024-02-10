@@ -105,7 +105,6 @@ async function changeAdminInformation(username, password) {
 async function updateProduct(productID, updatedData) {
 	const documentRef = doc(db, 'products', String(productID));
 	await updateDoc(documentRef, updatedData);
-	console.log('Document successfully updated.');
 }
 async function addToPending(
 	txnReference,
@@ -149,14 +148,34 @@ async function fetchImageForProduct(productID) {
 	return URLLIST;
 }
 
-async function fetchAllVerifiedProducts() {
-	const querySnapshot = await getDocs(collection(db, 'verified'));
+async function fetchAllCompletedOrders() {
+	const pr = collection(db, 'products','verified');
+	const q = query(pr, where('completed', '==', true));
+	const querySnapshot = await getDocs(q);
 	const AllProducts = [];
 	querySnapshot.forEach((doc) => {
 		AllProducts.push(doc.data());
 	});
 	return AllProducts;
 }
+async function fetchAllIncompletedOrders() {
+	const pr = collection(db, 'products','verified');
+	const q = query(pr, where('completed', '==', false));
+	const querySnapshot = await getDocs(q);
+	const AllProducts = [];
+	querySnapshot.forEach((doc) => {
+		AllProducts.push(doc.data());
+	});
+	return AllProducts;
+}
+async function completeOrder(txnReference)
+{
+	const docref = doc(db, "verified", String(txnReference));
+	await updateDoc(docref, {
+	completed: true
+	});
+}
+
 async function deleteVerified(productID) {
 	await deleteDoc(doc(db, 'verified', String(productID)));
 }
@@ -176,7 +195,9 @@ export const FireFunc = {
 	fetchImageForProduct,
 	fetchAdmin,
 	updateProduct,
-	fetchAllVerifiedProducts,
+	fetchAllCompletedOrders,
+	fetchAllIncompletedOrders,
+	completeOrder,
 	deleteVerified
 
 };

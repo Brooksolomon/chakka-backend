@@ -2,6 +2,7 @@
 	import { FireFunc } from '../../lib/firebase/firebase';
 	import cartStore from '../../stores/cartStore';
 	import CartProduct from '../../lib/CartProduct.svelte';
+	import { stringify } from 'uuid';
 	function submitForm(event) {
 		event.preventDefault();
 	}
@@ -56,7 +57,7 @@
 			<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 				<input
 					required
-					class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 					type="text"
 					placeholder="first name"
 					name="firstName"
@@ -65,7 +66,7 @@
 			<div class="w-full md:w-1/2 px-3">
 				<input
 					required
-					class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 					type="text"
 					placeholder="last name"
 					name="lastName"
@@ -76,7 +77,7 @@
 			<div class="w-full px-3">
 				<input
 					required
-					class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 					type="email"
 					placeholder="email"
 					name="email"
@@ -87,7 +88,7 @@
 			<div class="w-full px-3">
 				<input
 					required
-					class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 					type="phone"
 					placeholder="phone"
 					name="phone"
@@ -104,7 +105,7 @@
 				</label>
 				<div class="relative">
 					<select
-						class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+						class="block appearance-none w-full bg-white-800 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 						name="city"
 					>
 						<option>Addis Ababa</option>
@@ -129,7 +130,7 @@
 				</label>
 				<div class="relative">
 					<select
-						class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+						class="block appearance-none w-full bg-white-800 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 						name="subCity"
 					>
 						<option>Addis ketema</option>
@@ -159,7 +160,7 @@
 			<div class="w-full px-3">
 				<textarea
 					required
-					class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 					type="text"
 					placeholder="area description"
 					name="description"
@@ -170,8 +171,9 @@
 			<button class=" btn btn-neutral px-10" type="submit"> Pay now </button>
 		</div>
 		<input type="hidden" value={subtotal} name="price" />
-	</form>
-	<div class=" mx-6 w-full lg:w-1/2">
+		<input type="hidden" value={JSON.stringify($cartStore.cartProducts)} name="order">
+		</form>
+	<div class=" mx-6 w-full lg:w-5/12">
 		<ul class="menu menu-sm bg-base-200 rounded-box">
 			{#each $cartStore.cartProducts as prod}
 				<li class=" ">
@@ -181,22 +183,22 @@
 							src={prod.imageURL[0]}
 							alt={prod.name + ' image '}
 						/>
-						<div class=" px-3 w-full flex flex-col justify-between h-full py-2">
+						<div class=" px-3 w-full flex flex-col justify-between h-full py-2 ">
 							<p>{prod.name}</p>
-							<div class=" flex justify-between">
-								<p>ETB {prod.price}</p>
-								<p class="badge badge-neutral rounded">
-									{prod.amount} piece{prod.amount === 1 ? '' : 's'}
+							<div class=" flex">
+								<p class="badge badge-neutral rounded h-10 ">
+									{prod.amount} pc{prod.amount === 1 ? '' : 's'}
 								</p>
+								<p class="ml-48">ETB {prod.price}</p>
+								
 							</div>
 						</div>
 					</div>
 				</li>
 			{/each}
 		</ul>
-		<div class="subtotal text-center mt-4">
-			<p class="font-light">TOTAL</p>
-			<p class=" ">ETB {subtotal}</p>
+		<div class="subtotal text-center mt-4 ml-4">
+			<p class="font-light">TOTAL ETB {subtotal}</p>
 		</div>
 	</div>
 </div>

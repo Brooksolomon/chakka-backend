@@ -10,7 +10,7 @@ let myChapa = new Chapa('Bearer CHASECK_TEST-UgRRxH2RDEb0ksa1Y7dxnHxs6DZJpBWg')
 
 export const actions = {
     paymentInit: async ({ request }) => {
-      let { firstName,lastName,email,city,subCity,description,price} = Object.fromEntries(
+      let { firstName,lastName,email,city,subCity,description,price,order} = Object.fromEntries(
         await request.formData(),
       );
        const customerInfo =  {
@@ -22,8 +22,8 @@ export const actions = {
         callback_url: 'https://chakkawebhook.onrender.com/chapa',
         return_url: 'https://the-binger.vercel.app/',
         customization: {
-            title: 'I love e-commerce',
-            description: 'It is time to pay'
+            title: 'hello',
+            description: order
         }
         
         }
@@ -32,13 +32,19 @@ export const actions = {
         let response = await myChapa.initialize(customerInfo, { autoRef: true })
         txnReference = response["tx_ref"];
         url = response["data"]["checkout_url"];
-        //$cartStore.cartProducts
-        let prods = [];
-        cartStore.subscribe(v => {
-            prods = v.cartProducts
-        })
-        console.log(prods)
-       // FireFunc.addToPending(txnReference,firstName,lastName,email,city,subCity,description,)
+       
+        let orderarray = []
+        order = JSON.parse(order)
+       order.forEach(prod => {
+        orderarray.push(
+            {
+               productID:prod.productID,
+               name:prod.name,
+               amount:prod.amount 
+            }
+        )
+       });
+       FireFunc.addToPending(txnReference,firstName,lastName,email,city,subCity,description,orderarray,price)
 
         
         redirect(302, url)

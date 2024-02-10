@@ -118,7 +118,8 @@ async function addToPending(
 	city,
 	subCity,
 	description,
-	order
+	order,
+	price
 ) {
 	await setDoc(doc(db, 'pending', txnReference), {
 		txnReference: txnReference,
@@ -128,7 +129,8 @@ async function addToPending(
 		city: city,
 		subCity: subCity,
 		description: description,
-		order: order
+		order: order,
+		price_Before_tax:price
 	});
 }
 async function addImage(productID, img) {
@@ -149,7 +151,6 @@ async function fetchImageForProduct(productID) {
 
 	return URLLIST;
 }
-//fetchImageForProduct('35e422aa-c22d-4e2a-94bd-21ea7d2f505c');
 
 export const FireFunc = {
 	addProduct, //void

@@ -130,7 +130,7 @@ async function addToPending(
 	});
 }
 async function addImage(productID, img,count) {
-	console.log(count)
+	console.log("name count" ,count)
 	const imageRef = ref(storage, String(productID) + '/' + count);
 	const res = await uploadBytes(imageRef, img);
 }

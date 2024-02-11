@@ -57,22 +57,22 @@
 	</div>
 
 	<div class=" my-9">
-		<p class=" font-light tracking-widest text-3xl my-3 text-center md:text-left">Other Products</p>
+		<p class=" font-light tracking-widest text-2xl my-3 text-center md:text-left">Other Products</p>
 		<div
 			class=" flex items-center flex-col md:flex-row md:justify-between md:w-[90%] lg:w-[70%] xl:w-[60%]"
 		>
 			<a href="/essential-oils" data-sveltekit-reload class=" my-3"
 				><button
-					class=" w-[20rem] sm:w-[20rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[8rem]"
+					class=" sm:w-[30rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
 				>
 					ESSENTIAL OILS
 				</button></a
 			>
 			<a href="/herbs-and-spices" data-sveltekit-reload class=" my-3"
 				><button
-					class=" border-2 font-light tracking-widest text-xl md:text-2xl w-[20rem] sm:w-[20rem] border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[8rem]"
+					class=" border-2 font-light tracking-widest text-xl md:text-2xl  sm:w-[30rem] border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
 				>
-					HERBS AND SPICES
+					HERBS & SPICES
 				</button></a
 			>
 		</div>

@@ -28,7 +28,6 @@
 	}
 	let modalId = generateRandomString(6);
 
-	console.log(product);
 </script>
 
 <div class="flex flex-col items-center">

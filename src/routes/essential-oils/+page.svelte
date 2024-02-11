@@ -64,16 +64,16 @@
 		>
 			<a data-sveltekit-reload class=" my-3" href="/cold-pressed-oils"
 				><button
-					class=" w-[20rem] sm:w-[20rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[8rem]"
+					class=" sm:w-[30rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
 				>
 					COLD-PRESSED OILS
 				</button></a
 			>
 			<a data-sveltekit-reload class=" my-3" href="/herbs-and-spices"
 				><button
-					class=" border-2 font-light tracking-widest text-xl md:text-2xl w-[20rem] sm:w-[20rem] border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[8rem]"
+					class=" border-2 font-light tracking-widest text-xl md:text-2xl ] sm:w-[30rem] border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
 				>
-					HERBS AND SPICES
+					HERBS & SPICES
 				</button></a
 			>
 		</div>

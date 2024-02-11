@@ -1,5 +1,4 @@
-
-<div class="navbar bg-[#f7f3ec] sticky top-0 z-50 ">
+<div class="navbar bg-[#f7f3ec] sticky top-0 z-50 flex justify-between w-full">
 	<div class="navbar-start">
 		<div class="dropdown">
 			<div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -43,14 +42,14 @@
 		<button></button>
 		<button></button>
 	</div>
-	<div class="navbar-end hidden  lg:flex">
+	<div class="navbar-end hidden lg:flex">
 		<ul class="menu menu-horizontal px-1">
 			<li class="text-xl"><a>Home</a></li>
 			<li>
 				<details>
 					<summary class="text-xl">Products</summary>
 					<ul class="p-2 w-60 bg-base-200">
-						<li><a >All Products</a></li>
+						<li><a>All Products</a></li>
 						<li><a>Essential Oils</a></li>
 						<li><a>Cold-Pressed Oils</a></li>
 						<li><a>Herbs and Spices</a></li>
@@ -61,5 +60,4 @@
 			<li class="text-xl"><a>Sustainable Source</a></li>
 		</ul>
 	</div>
-	<div class="navbar-end"></div>
 </div>

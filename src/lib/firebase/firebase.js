@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getStorage, ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, listAll, getDownloadURL,deleteObject } from 'firebase/storage';
 import { updateDoc } from 'firebase/firestore';
 import { v4 } from 'uuid';
 
@@ -50,6 +50,7 @@ async function addProduct(productID, name, source, price, description, category)
 }
 async function deleteProduct(productID) {
 	 await deleteDoc(doc(db, 'products', String(productID)));
+	 await deleteImages(productID)
 }
 
 async function fetchSpecificProuct(productID) {
@@ -145,7 +146,6 @@ async function fetchImageForProduct(productID) {
 			URLLIST.push(url);
 		})
 	);
-	console.log(URLLIST)
 	return URLLIST;
 }
 
@@ -183,6 +183,21 @@ async function deleteVerified(productID) {
 	await deleteDoc(doc(db, 'verified', String(productID)));
 }
 
+async function deleteImages(productID)
+{
+	const storage = getStorage();
+
+	
+	// Create a reference to the file to delete
+	const desertRef = ref(storage, String(productID) + '/');
+
+	const filesList = await listAll(desertRef);
+
+    // Delete each file in the folder
+    await Promise.all(filesList.items.map(async (item) => {
+      await deleteObject(item);
+    }));
+}
 
 
 export const FireFunc = {

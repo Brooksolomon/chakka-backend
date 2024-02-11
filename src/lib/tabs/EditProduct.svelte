@@ -6,7 +6,7 @@
 
 	const categories = ['Cold-Pressed Oils', 'Herbs And Spices', 'Essential Oils'];
 	let selectedCat = '';
-	let products = [];
+	$: products = [];
 
 	onMount(() => {});
 	let loading = false;
@@ -30,8 +30,6 @@
 				}
 			})
 		);
-
-		console.log('products', products);
 	};
 </script>
 

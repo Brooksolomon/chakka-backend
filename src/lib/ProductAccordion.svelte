@@ -82,9 +82,10 @@
 						<button on:click={() => handleUpdate(prod)} class=" btn btn-neutral px-7 btn-sm"
 							>Update</button
 						>
-						<button on:click={() => handleDelete(prod)} class=" btn btn-error px-7 btn-sm"
+						<a data-sveltekit-reload>
+						<button  on:click={() => handleDelete(prod)} class=" btn btn-error px-7 btn-sm"
 							>Delete</button
-						>
+						> </a>
 					</div>
 				</div>
 			</div>

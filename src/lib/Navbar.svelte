@@ -42,7 +42,7 @@
 		<button></button>
 		<button></button>
 	</div>
-	<div class="navbar-end hidden lg:flex">
+	<div class="navbar-end hidden lg:flex mr-[5rem]">
 		<ul class="menu menu-horizontal px-1">
 			<li class="text-xl"><a>Home</a></li>
 			<li>

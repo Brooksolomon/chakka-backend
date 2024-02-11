@@ -42,14 +42,12 @@
 		const productId = uuid();
 		try {
 			await addProduct(productId, name, source, price, description, category);
-			imgs.forEach(async (img) => {
+			imgs.forEach(async (img, i) => {
 				try {
-					await addImage(productId, img.file,count);
+					await addImage(productId, img.file, i);
 				} catch (error) {
 					console.log('image upload error', error);
 				}
-
-				count+=1;
 			});
 		} catch (error) {
 			console.log(error.message);

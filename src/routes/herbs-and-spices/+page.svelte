@@ -9,7 +9,7 @@
 
 	const { fetchProductWithCategory, fetchImageForProduct } = FireFunc;
 	onMount(async () => {
-		const fetchedProducts = await fetchProductWithCategory('Herbs And Spices ');
+		const fetchedProducts = await fetchProductWithCategory('Herbs And Spices');
 		const products = await Promise.all(
 			fetchedProducts.map(async (prod) => {
 				try {
@@ -77,4 +77,3 @@
 		</div>
 	</div>
 </div>
-

@@ -12,7 +12,7 @@
 		};
 	};
 
-	const handleUpdate = (prod) => {
+	const handleUpdate = async (prod) => {
 		const updatedProduct = {
 			name: formData.name || prod.name,
 			description: formData.description || prod.description,
@@ -21,6 +21,7 @@
 		};
 
 		// call update function here
+		await updateProduct(prod.id, updatedProduct);
 		// then call handleCategoryChange() function to update the form with the latest change if necessary
 	};
 </script>

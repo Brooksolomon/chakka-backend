@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { FireFunc } from '../../lib/firebase/firebase';
-	const { fetchProductWithCategory, fetchImageForProduct } = FireFunc;
+	const { fetchProductWithCategory, fetchImageForProduct, updateProduct } = FireFunc;
 	import ProductAccordion from '../ProductAccordion.svelte';
 
 	const categories = ['Cold-Pressed Oils', 'Herbs And Spices', 'Essential Oils'];

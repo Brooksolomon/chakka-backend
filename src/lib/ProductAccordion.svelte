@@ -1,6 +1,6 @@
 <script>
 	import { FireFunc } from '../lib/firebase/firebase';
-	const { updateProduct } = FireFunc;
+	const { updateProduct, deleteProduct } = FireFunc;
 	export let products;
 	export let handleCategoryChange;
 	let formData = {};
@@ -23,6 +23,10 @@
 		// call update function here
 		await updateProduct(prod.id, updatedProduct);
 		// then call handleCategoryChange() function to update the form with the latest change if necessary
+	};
+
+	const handleDelete = async (prod) => {
+		await deleteProduct(prod.id);
 	};
 </script>
 
@@ -76,7 +80,10 @@
 
 					<div>
 						<button on:click={() => handleUpdate(prod)} class=" btn btn-neutral px-7 btn-sm"
-							>update</button
+							>Update</button
+						>
+						<button on:click={() => handleDelete(prod)} class=" btn btn-error px-7 btn-sm"
+							>Delete</button
 						>
 					</div>
 				</div>

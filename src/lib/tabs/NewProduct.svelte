@@ -39,16 +39,17 @@
 			posted = false;
 		}, 3000);
 		let { name, source, description, price, category } = formData;
-		console.log(category);
 		const productId = uuid();
 		try {
 			await addProduct(productId, name, source, price, description, category);
 			imgs.forEach(async (img) => {
 				try {
-					await addImage(productId, img.file);
+					await addImage(productId, img.file,count);
 				} catch (error) {
 					console.log('image upload error', error);
 				}
+
+				count+=1;
 			});
 		} catch (error) {
 			console.log(error.message);

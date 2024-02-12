@@ -10,7 +10,7 @@ let myChapa = new Chapa('Bearer CHASECK_TEST-UgRRxH2RDEb0ksa1Y7dxnHxs6DZJpBWg')
 
 export const actions = {
     paymentInit: async ({ request }) => {
-      let { firstName,lastName,email,city,subCity,description,price,order} = Object.fromEntries(
+      let { firstName,lastName,email,phone,city,subCity,description,price,order} = Object.fromEntries(
         await request.formData(),
       );
        const customerInfo =  {
@@ -44,7 +44,7 @@ export const actions = {
             }
         )
        });
-       FireFunc.addToPending(txnReference,firstName,lastName,email,city,subCity,description,orderarray,price)
+       FireFunc.addToPending(txnReference,firstName,lastName,email,phone,city,subCity,description,orderarray,price)
 
         
         redirect(302, url)

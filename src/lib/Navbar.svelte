@@ -1,4 +1,4 @@
-<div class="navbar bg-[#f7f3ec] sticky top-0 z-50 flex justify-between w-full">
+<div class="navbar bg-[#f7f3ec] sticky top-0 z-19 flex justify-between w-full">
 	<div class="navbar-start">
 		<div class="dropdown">
 			<div tabindex="0" role="button" class="btn btn-ghost lg:hidden">

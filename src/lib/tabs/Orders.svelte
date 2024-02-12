@@ -89,6 +89,7 @@
 					<div class="bg-gray-300 pl-10 rounded-2xl">
 						<p>Description : <span class=" font-bold">{order.description}</span></p>
 						<p>Email : <span class="font-bold">{order.email}</span></p>
+						<p>Phone : <span class="font-bold">{order.phone}</span></p>
 						<p>Price Before Tax : <span class="font-bold">{order.price_Before_tax}</span></p>
 						<p>City : <span class=" font-bold">{order.city}</span></p>
 						<p>Subcity : <span class="font-bold">{order.subCity}</span></p>

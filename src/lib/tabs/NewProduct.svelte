@@ -4,7 +4,13 @@
 	const { addProduct, addImage } = FireFunc;
 	import { invalidateAll } from '$app/navigation';
 	import uiStore from '../../stores/uiStore';
-	let formData = {};
+	let formData = {
+		name: '',
+		source: '',
+		description: '',
+		price: '',
+		category: ''
+	};
 	const cateogries = ['Cold-Pressed Oils', 'Essential Oils', 'Herbs And Spices'];
 	const handleInput = (e) => {
 		formData = {
@@ -14,6 +20,7 @@
 	};
 
 	let imgs = [''];
+
 	const handleImgChange = (e, index) => {
 		const file = e.target.files[0];
 		const reader = new FileReader();
@@ -38,6 +45,7 @@
 		setTimeout(() => {
 			posted = false;
 		}, 3000);
+
 		let { name, source, description, price, category } = formData;
 		const productId = uuid();
 
@@ -53,17 +61,48 @@
 			});
 			return;
 		}
+		uiStore.update((curr) => {
+			return {
+				...curr,
+				loading: true
+			};
+		});
 		try {
 			await addProduct(productId, name, source, price, description, category);
 			imgs.forEach(async (img, i) => {
 				try {
 					await addImage(productId, img.file, i);
 					posted = true;
+					uiStore.update((curr) => {
+						return {
+							...curr,
+							loading: false
+						};
+					});
+					formData = {
+						name: '',
+						source: '',
+						description: '',
+						price: '',
+						category: ''
+					};
 				} catch (error) {
+					uiStore.update((curr) => {
+						return {
+							...curr,
+							loading: false
+						};
+					});
 					console.log('image upload error', error);
 				}
 			});
 		} catch (error) {
+			uiStore.update((curr) => {
+				return {
+					...curr,
+					loading: false
+				};
+			});
 			console.log(error.message);
 		}
 	};
@@ -75,6 +114,7 @@
 		type="text"
 		class=" input my-3 w-9/12"
 		placeholder="Name"
+		bind:value={formData.name}
 		name="name"
 		on:input={handleInput}
 	/>
@@ -82,12 +122,14 @@
 		type="text"
 		class=" input my-3 w-9/12"
 		placeholder="Source"
+		bind:value={formData.source}
 		name="source"
 		on:input={handleInput}
 	/>
 	<input
 		type="text"
 		class=" input my-3 w-9/12"
+		bind:value={formData.description}
 		placeholder="Description"
 		name="description"
 		on:input={handleInput}
@@ -95,6 +137,7 @@
 	<input
 		type="text"
 		class=" input my-3 w-9/12"
+		bind:value={formData.price}
 		placeholder="Price"
 		name="price"
 		on:input={handleInput}
@@ -102,6 +145,7 @@
 	<div class="relative">
 		<select
 			name="category"
+			bind:value={formData.category}
 			on:change={handleInput}
 			class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 		>

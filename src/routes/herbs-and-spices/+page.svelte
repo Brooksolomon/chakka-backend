@@ -14,6 +14,7 @@
 			fetchedProducts.map(async (prod) => {
 				try {
 					const imageURL = await fetchImageForProduct(prod.productID);
+					console.log('Imageee Url', imageURL);
 					return {
 						...prod,
 						id: prod.productID,

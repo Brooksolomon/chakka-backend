@@ -3,6 +3,7 @@
 	import { v4 as uuid } from 'uuid';
 	const { addProduct, addImage } = FireFunc;
 	import { invalidateAll } from '$app/navigation';
+	import uiStore from '../../stores/uiStore';
 	let formData = {};
 	const cateogries = ['Cold-Pressed Oils', 'Essential Oils', 'Herbs And Spices'];
 	const handleInput = (e) => {
@@ -34,17 +35,30 @@
 	};
 	let posted = false;
 	const handlePost = async (event) => {
-		posted = true;
 		setTimeout(() => {
 			posted = false;
 		}, 3000);
 		let { name, source, description, price, category } = formData;
 		const productId = uuid();
+
+		if (!name || !source || !description || !price || !category || !imgs.length) {
+			uiStore.update((curr) => {
+				return {
+					...curr,
+					toast: {
+						on: true,
+						message: 'Make sure all fields are filled'
+					}
+				};
+			});
+			return;
+		}
 		try {
 			await addProduct(productId, name, source, price, description, category);
 			imgs.forEach(async (img, i) => {
 				try {
 					await addImage(productId, img.file, i);
+					posted = true;
 				} catch (error) {
 					console.log('image upload error', error);
 				}

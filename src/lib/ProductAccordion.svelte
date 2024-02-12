@@ -1,5 +1,6 @@
 <script>
 	import { FireFunc } from '../lib/firebase/firebase';
+	import uiStore from '../stores/uiStore';
 	const { updateProduct, deleteProduct } = FireFunc;
 	export let products;
 	export let handleCategoryChange;
@@ -19,14 +20,81 @@
 			source: formData.source || prod.source,
 			price: formData.price || prod.price
 		};
-
+		uiStore.update((curr) => {
+			return {
+				...curr,
+				loading: true
+			};
+		});
 		// call update function here
-		await updateProduct(prod.id, updatedProduct);
+		try {
+			await updateProduct(prod.id, updatedProduct);
+			uiStore.update((curr) => {
+				return {
+					...curr,
+					loading: false,
+					toast: {
+						on: true,
+						type: 'success',
+						message: 'Product updated successfully'
+					}
+				};
+			});
+			setTimeout(() => {
+				window.location.reload();
+			}, 2000);
+		} catch (error) {
+			uiStore.update((curr) => {
+				return {
+					...curr,
+					loading: true,
+					toast: {
+						on: true,
+						type: 'error',
+						message: 'Update Failed'
+					}
+				};
+			});
+		}
 		// then call handleCategoryChange() function to update the form with the latest change if necessary
 	};
 
 	const handleDelete = async (prod) => {
-		await deleteProduct(prod.id);
+		uiStore.update((curr) => {
+			return {
+				...curr,
+				loading: true
+			};
+		});
+		try {
+			await deleteProduct(prod.id);
+			uiStore.update((curr) => {
+				return {
+					...curr,
+					loading: false,
+					toast: {
+						on: true,
+						type: 'success',
+						message: 'Product Deleted'
+					}
+				};
+			});
+			setTimeout(() => {
+				window.location.reload();
+			}, 2000);
+		} catch (error) {
+			uiStore.update((curr) => {
+				return {
+					...curr,
+					loading: false,
+					toast: {
+						on: true,
+						type: 'error',
+						message: 'Delete Failed'
+					}
+				};
+			});
+		}
 	};
 </script>
 
@@ -82,10 +150,10 @@
 						<button on:click={() => handleUpdate(prod)} class=" btn btn-neutral px-7 btn-sm"
 							>Update</button
 						>
-						
-						<button  on:click={() => handleDelete(prod)} class=" btn btn-error px-7 btn-sm"
+
+						<button on:click={() => handleDelete(prod)} class=" btn btn-error px-7 btn-sm"
 							>Delete</button
-						> 
+						>
 					</div>
 				</div>
 			</div>

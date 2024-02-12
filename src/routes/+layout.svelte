@@ -6,6 +6,8 @@
 	import uiStore from '../stores/uiStore';
 	import Sidebar from '../lib/Sidebar.svelte';
 	import Footer from '../lib/Footer.svelte';
+	import Loading from '../lib/Loading.svelte';
+	import Toast from '../lib/Toast.svelte';
 	onMount(() => {
 		if (window) {
 			cartStore.update((curr) => {
@@ -31,4 +33,12 @@
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 
 	<Sidebar />
+{/if}
+
+{#if $uiStore.loading}
+	<Loading />
+{/if}
+
+{#if $uiStore.toast.on}
+	<Toast />
 {/if}

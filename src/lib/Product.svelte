@@ -15,6 +15,16 @@
 		});
 	};
 
+	const returnFirstImage = () => {
+		let firstImage;
+		product.imageURL.map((im) => {
+			if (im.split('?')[0].slice(-1) === '0') {
+				firstImage = im;
+			}
+		});
+
+		return firstImage;
+	};
 	function generateRandomString(length) {
 		const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
 		let randomString = '';
@@ -27,11 +37,10 @@
 		return randomString;
 	}
 	let modalId = generateRandomString(6);
-
 </script>
 
 <div class="flex flex-col items-center">
-	<img src={product.imageURL[0]} alt={product.name + ' image '} class=" p-8" />
+	<img src={returnFirstImage()} alt={product.name + ' image '} class=" p-8" />
 	<p class="text-slate-900 text-center">{product.name} | {product.source}</p>
 	<p class=" text-sm font-light tracking-widest text-slate-600">ETB {product.price}</p>
 

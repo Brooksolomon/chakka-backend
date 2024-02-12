@@ -86,6 +86,7 @@
 						price: '',
 						category: ''
 					};
+					imgs = [''];
 				} catch (error) {
 					uiStore.update((curr) => {
 						return {

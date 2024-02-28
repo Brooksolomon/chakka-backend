@@ -40,13 +40,13 @@
 </script>
 
 <div class="flex flex-col items-center">
-	<img src={returnFirstImage()} alt={product.name + ' image '} class=" p-8" />
-	<p class="text-slate-900 text-center">{product.name} | {product.source}</p>
-	<p class=" text-sm font-light tracking-widest text-slate-600">ETB {product.price}</p>
+	<img src={returnFirstImage()} alt={product.name + ' image '} class=" p-8 w-10/12" />
+	<p class="text-slate-900 text-center mb-2"><b>{product.name} | {product.source}</b></p>
+	<p class=" text-sm font-light tracking-widest text-slate-600 mb-3">ETB {product.price}</p>
 
 	<button
 		on:click={showModal}
-		class="btn font-light tracking-widest text-xl m-3 w-full bg-[#d6cb6b] border-none rounded p-[10px] pointer hover:bg-[#aea55a] transition ease-in-out text-slate-800"
+		class="btn font-light tracking-widest text-l m-3 w-1/2 bg-[#d6cb6b] border-none rounded p-[10px] pointer hover:bg-[#aea55a] transition ease-in-out text-slate-800"
 		onclick={`my_modal_${modalId}.showModal()`}>VIEW PRODUCT</button
 	>
 </div>

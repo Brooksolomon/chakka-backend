@@ -47,7 +47,6 @@
 			/>
 
 			<form method="dialog">
-				<!-- if there is a button, it will close the modal -->
 
 				<button
 					on:click={handleAddToCart}

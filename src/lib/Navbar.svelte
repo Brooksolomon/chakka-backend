@@ -42,22 +42,24 @@
 		<button></button>
 		<button></button>
 	</div>
-	<div class="navbar-end hidden lg:flex mr-[5rem]">
-		<ul class="menu menu-horizontal px-1">
+	<div class="navbar-end hidden lg:flex mr-[5rem] ">
+		<ul class="menu menu-horizontal px-1 lg:gap-18">
 			<li class="text-xl"><a>Home</a></li>
 			<li>
 				<details>
 					<summary class="text-xl">Products</summary>
-					<ul class="p-2 w-60 bg-base-200">
-						<li><a>All Products</a></li>
-						<li><a>Essential Oils</a></li>
-						<li><a>Cold-Pressed Oils</a></li>
-						<li><a>Herbs and Spices</a></li>
+					<ul class="p-2 w-60 bg-[#f7f3ec]">
+						<li><a><b>All Products</b></a></li>
+						<li><a href="/essential-oils" data-sveltekit-reload ><b>Essential Oils</b></a></li>
+						<li><a href="/cold-pressed-oils" data-sveltekit-reload ><b>Cold-Pressed Oils</b></a></li>
+						<li><a href="/herbs-and-spices" data-sveltekit-reload ><b>Herbs and Spices</b></a></li>
 					</ul>
 				</details>
 			</li>
 			<li class="text-xl"><a>Plants</a></li>
 			<li class="text-xl"><a>Sustainable Source</a></li>
+			<li class="text-xl"><a>About</a></li>
+			<li class="text-xl"><a>Contact</a></li>
 		</ul>
 	</div>
 </div>

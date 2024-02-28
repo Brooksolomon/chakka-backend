@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { FireFunc } from '../firebase/firebase';
 	import { CaretCircleDown, CaretDown, ListNumbers, Spinner } from 'phosphor-svelte';
-	import { slide } from 'svelte/transition'
+	import { slide } from 'svelte/transition';
+	import uiStore from '../../stores/uiStore';
 	const { fetchAllCompletedOrders, fetchAllIncompletedOrders, completeOrder } = FireFunc;
 
 	let completedOrders = [];
@@ -11,19 +12,18 @@
 	let orders = [];
 	onMount(async () => {});
 
-	const setList = async(mode) =>
-	{
+	const setList = async (mode) => {
 		if (mode === 'complete' && !completedOrders.length) {
 			completedOrders = await fetchAllCompletedOrders();
 			completedOrders.forEach((order) => {
-				order['collapsed'] = true
-			})
+				order['collapsed'] = true;
+			});
 			orders = completedOrders;
 		} else if (mode === 'incomplete' && !incompleteOrders.length) {
 			incompleteOrders = await fetchAllIncompletedOrders();
 			incompleteOrders.forEach((order) => {
-				order['collapsed'] = true
-			})
+				order['collapsed'] = true;
+			});
 			orders = incompleteOrders;
 		} else if (mode === 'complete') {
 			orders = completedOrders;
@@ -32,58 +32,92 @@
 		} else {
 			return;
 		}
-	}
+	};
 
 	const handleModeChange = async (e) => {
-		setList(e.target.value)	
+		setList(e.target.value);
 	};
 	setList('complete');
 
 	const handleCompleteOrder = async (txn) => {
+		uiStore.update((curr) => {
+			return {
+				...curr,
+				loading: true
+			};
+		});
 		try {
 			await completeOrder(txn);
+			uiStore.update((curr) => {
+				return {
+					...curr,
+					loading: false
+				};
+			});
 		} catch (error) {
+			uiStore.update((curr) => {
+				return {
+					...curr,
+					loading: false,
+					toast: {
+						on: true,
+						message: 'Error completing order!'
+					}
+				};
+			});
+
 			console.log('error completing order', error.message);
 		}
 	};
 </script>
 
 <div>
-	<select name="" id="" on:change={handleModeChange} class=" select select-warning" value="complete">
+	<select
+		name=""
+		id=""
+		on:change={handleModeChange}
+		class=" select select-warning"
+		value="complete"
+	>
 		<option value="complete">See Completed</option>
 		<option value="incomplete">See Incomplete</option>
 	</select>
 	{#each orders as order}
-	<div class="w-full rounded-md p-1 transition-all ">
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<div class="w-full rounded-md p-1 transition-all">
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
-		{#if order.collapsed}
-			<div
-			on:click={() => {
-				order.collapsed = !order.collapsed
-			}}
-				in:slide
-				class="font-lg flex flex-row items-center justify-between gap-4 rounded-2xl bg-[#d6cb6b] p-4 text-xl">
-				<div class="flex flex-row gap-4 justify-center">
-					<span
-						>
-						<CaretCircleDown size="24" />
-					</span>
-					<h3 class="text-base-200">
-						{order.firstName} {order.lastName}
-					</h3>
+			{#if order.collapsed}
+				<div
+					on:click={() => {
+						order.collapsed = !order.collapsed;
+					}}
+					in:slide
+					class="font-lg flex flex-row items-center justify-between gap-4 rounded-2xl bg-[#d6cb6b] p-4 text-xl"
+				>
+					<div class="flex flex-row gap-4 justify-center">
+						<span>
+							<CaretCircleDown size="24" />
+						</span>
+						<h3 class="text-base-200">
+							{order.firstName}
+							{order.lastName}
+						</h3>
+					</div>
 				</div>
-				</div>
-		{:else}
-				<div transition:slide >
-					<div on:click={() => {
-						order.collapsed = !order.collapsed}} class="font-lg flex flex-row items-center justify-between gap-4 rounded-2xl bg-[#d6cb6b] p-4 text-xl">
-						<span
-							>
+			{:else}
+				<div transition:slide>
+					<div
+						on:click={() => {
+							order.collapsed = !order.collapsed;
+						}}
+						class="font-lg flex flex-row items-center justify-between gap-4 rounded-2xl bg-[#d6cb6b] p-4 text-xl"
+					>
+						<span>
 							<CaretDown size="24" />
 						</span>
 						<h3 class="text-base-200">
-							{order.firstName} {order.lastName}
+							{order.firstName}
+							{order.lastName}
 						</h3>
 					</div>
 					<div class="bg-gray-300 pl-10 rounded-2xl">
@@ -93,8 +127,8 @@
 						<p>Price Before Tax : <span class="font-bold">{order.price_Before_tax}</span></p>
 						<p>City : <span class=" font-bold">{order.city}</span></p>
 						<p>Subcity : <span class="font-bold">{order.subCity}</span></p>
-		
-						<ul class="menu bg-base-200  w-56 rounded-box">
+
+						<ul class="menu bg-base-200 w-56 rounded-box">
 							<p class=" text-xl font-bold my-4">Products</p>
 							{#each order.order as ord}
 								<li class=" ">
@@ -112,9 +146,8 @@
 							>
 						{/if}
 					</div>
-					
 				</div>
-		{/if}
-	</div> 
+			{/if}
+		</div>
 	{/each}
 </div>

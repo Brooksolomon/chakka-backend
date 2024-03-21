@@ -1,7 +1,10 @@
 <script>
+	import cartStore from "../stores/cartStore";
+
 	export let product;
 	export let handleClick;
 	export let source;
+	
 	
 </script>
 

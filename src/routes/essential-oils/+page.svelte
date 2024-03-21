@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 	import { FireFunc } from '../../lib/firebase/firebase';
 
+	;
 	const { fetchProductWithCategory, fetchImageForProduct } = FireFunc;
 	onMount(async () => {
 		const fetchedProducts = await fetchProductWithCategory('Essential Oils');

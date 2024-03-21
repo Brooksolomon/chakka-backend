@@ -4,7 +4,7 @@
 	import '../app.css';
 	import cartStore from '../stores/cartStore';
 	import uiStore from '../stores/uiStore';
-	import Sidebar from '../lib/Sidebar.svelte';
+	import Sidebar from '../lib/sidebar.svelte';
 	import Footer from '../lib/Footer.svelte';
 	import Loading from '../lib/Loading.svelte';
 	import Toast from '../lib/Toast.svelte';

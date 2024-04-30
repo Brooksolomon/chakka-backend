@@ -1,4 +1,4 @@
-<footer class="footer p-[10rem] text-base-content w-[100vw] bg-[#bb942e]">
+<footer class="footer p-[10rem] text-base-content w-[100vw] bg-[#bb942e] ">
 	<nav>
 		<h6 class="footer-title">Services</h6>
 		<a href="/" class="link link-hover">Home</a>
@@ -24,7 +24,7 @@
 	</nav>
 	<form>
 		<h6 class="footer-title">Keep in touch</h6>
-		<fieldset class="form-control w-80">
+		<fieldset class="form-control w-full">
 			<label class="label">
 				<span class="label-text">Enter your email address</span>
 			</label>

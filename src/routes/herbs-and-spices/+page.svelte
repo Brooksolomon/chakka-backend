@@ -63,14 +63,14 @@
 		<div class="grid grid-cols-1 sm:grid-cols-2 w-[60%]">
 			<a data-sveltekit-reload href="/cold-pressed-oils" class=""
 				><button
-					class=" sm:w-[30rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
+					class=" w-[10rem] md:w-[20rem] lg:w-[30rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
 				>
 					COLD-PRESSED OILS
 				</button></a
 			>
 			<a data-sveltekit-reload href="/essential-oils" class=""
 				><button
-					class=" sm:w-[30rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
+					class=" w-[10rem] md:w-[20rem] lg:w-[30rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
 				>
 					ESSENTIAL OILS
 				</button></a

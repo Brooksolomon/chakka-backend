@@ -61,16 +61,16 @@
 		<div
 			class=" flex items-center flex-col md:flex-row md:justify-between md:w-[90%] lg:w-[70%] xl:w-[60%]"
 		>
-			<a href="/essential-oils" data-sveltekit-reload class=" my-3"
+			<a href="/essential-oils" data-sveltekit-reload class=" my-3 mx-4"
 				><button
-					class=" sm:w-[30rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
+					class=" w-[10rem] md:w-[20rem] lg:w-[30rem] border-2 font-light tracking-widest text-xl md:text-2xl border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
 				>
 					ESSENTIAL OILS
 				</button></a
 			>
-			<a href="/herbs-and-spices" data-sveltekit-reload class=" my-3"
+			<a href="/herbs-and-spices" data-sveltekit-reload class=" my-3 mx-4"
 				><button
-					class=" border-2 font-light tracking-widest text-xl md:text-2xl  sm:w-[30rem] border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
+					class=" border-2 font-light tracking-widest text-xl md:text-2xl  w-[10rem] md:w-[20rem] lg:w-[30rem] border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[5rem]"
 				>
 					HERBS & SPICES
 				</button></a

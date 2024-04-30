@@ -5,7 +5,7 @@ import { redirect } from '@sveltejs/kit';
 import {FireFunc} from'../../lib/firebase/firebase.js'
 import cartStore from '../../stores/cartStore.js';
 
-let myChapa = new Chapa('Bearer CHASECK_TEST-UgRRxH2RDEb0ksa1Y7dxnHxs6DZJpBWg')
+let myChapa = new Chapa('Bearer CHASECK-JfoQ1UxNpBYYJKBbAAXX4wpVaMGUP78t')
 
 
 export const actions = {

@@ -22,7 +22,7 @@
 				class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
 			>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<li><a>Home</a></li>
+				<li><a href="https://www.chakkaorigins.com">Home</a></li>
 				<li>
 					<a>Products</a>
 					<ul class="p-2 bg-inherit">
@@ -31,23 +31,25 @@
 						<li><a href="/herbs-and-spices">Herbs and Spices</a></li>
 					</ul>
 				</li>
-				<li><a href="/plants">Plants</a></li>
-				<li><a href="/sustainable-source">Sustainable Source</a></li>
+				<li><a href="https://www.chakkaorigins.com/plants">Plants</a></li>
+				<li><a href="https://www.chakkaorigins.com/sustainable-source">Sustainable Source</a></li>
+				<li><a href="https://www.chakkaorigins.com/about">About</a></li>
+				<li><a href="https://www.chakkaorigins.com/contact">Contact</a></li>
 			</ul>
 		</div>
-		<img src="/Chakka.png" alt="" width="20" class=" w-[8rem] ml-6" />
+		<img src="/Chakka.png" alt="" width="24" class=" w-[8rem] lg:ml-20 lg:mt-12" />
 	</div>
 	<div class="navbar-center hidden">
 		<button></button>
 		<button></button>
 		<button></button>
 	</div>
-	<div class="navbar-end hidden lg:flex mr-[5rem] ">
-		<ul class="menu menu-horizontal px-1 lg:gap-18">
-			<li class="text-xl"><a>Home</a></li>
+	<div class="navbar-center hidden lg:flex mr-[2rem] mt-[4vh] ">
+		<ul class="menu menu-horizontal lg:gap-[4vw]">
+			<li class="text-lg"><a href="https://www.chakkaorigins.com">Home</a></li>
 			<li>
 				<details>
-					<summary class="text-xl">Products</summary>
+					<summary class="text-lg">Products</summary>
 					<ul class="p-2 w-60 bg-[#f7f3ec]">
 						<li><a><b>All Products</b></a></li>
 						<li><a href="/essential-oils" data-sveltekit-reload ><b>Essential Oils</b></a></li>
@@ -56,10 +58,10 @@
 					</ul>
 				</details>
 			</li>
-			<li class="text-xl"><a>Plants</a></li>
-			<li class="text-xl"><a>Sustainable Source</a></li>
-			<li class="text-xl"><a>About</a></li>
-			<li class="text-xl"><a>Contact</a></li>
+			<li class="text-lg"><a href="https://www.chakkaorigins.com/plants">Plants</a></li>
+			<li class="text-lg"><a href="https://www.chakkaorigins.com/sustainable-source">Sustainable Source</a></li>
+			<li class="text-lg"><a href="https://www.chakkaorigins.com/about">About</a></li>
+			<li class="text-lg"><a href="https://www.chakkaorigins.com/contact">Contact</a></li>
 		</ul>
 	</div>
 </div>

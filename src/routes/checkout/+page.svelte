@@ -52,7 +52,7 @@
 	class="flex items-center justify-center h-screen flex-col-reverse lg:flex-row mt-[30vh] lg:mt-0"
 >
 	<form class="w-full max-w-lg" method="post" action="?/paymentInit">
-		<h1 class="text-4xl my-10  text-center font-semibold">Chakka Origins, thanks<br>  you for your business!</h1>
+		<h1 class="text-4xl my-10  text-center font-semibold">Chakka Origins thanks you<br>for your business!</h1>
 		<div class="flex flex-wrap -mx-3 mb-6">
 			<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 				<input

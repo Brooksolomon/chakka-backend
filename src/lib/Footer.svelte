@@ -1,12 +1,12 @@
 <footer class="footer p-[10rem] text-base-content w-[100vw] bg-[#bb942e] ">
 	<nav>
 		<h6 class="footer-title">Services</h6>
-		<a href="/" class="link link-hover">Home</a>
-		<a class="link link-hover">Products</a>
-		<a href="/plants" class="link link-hover">Plants</a>
-		<a href="/sustainable-source" class="link link-hover">Sustainable Source </a>
-		<a href="/about" class=" link link-hover">About</a>
-		<a href="/contact" class=" link link-hover">Contact</a>
+		<a href="https://www.chakkaorigins.com" class="link link-hover">Home</a>
+		<a class="link link-hover" href="/biodiverse-oils" data-sveltekit-reload>Products</a>
+		<a href="https://www.chakkaorigins.com/herbs-and-spices" class="link link-hover">Herbs & Spices</a>
+		<a href="https://www.chakkaorigins.com/sustainable-source" class="link link-hover">Sustainable Source </a>
+		<a href="https://www.chakkaorigins.com/about" class=" link link-hover">About</a>
+		<a href="https://www.chakkaorigins.com/contact" class=" link link-hover">Contact</a>
 	</nav>
 
 	<nav>
@@ -29,9 +29,9 @@
 				<span class="label-text">Enter your email address</span>
 			</label>
 			<div class="">
-				<input type="text" placeholder="Name" class=" input input-bordered w-full" />
-				<input type="text" placeholder="Email" class="input input-bordered w-full my-3" />
-				<textarea name="message" id="" placeholder="message" class=" textarea w-full"></textarea>
+				<input type="text" placeholder="Name" class=" input input-bordered w-full rounded-none" />
+				<input type="text" placeholder="Email" class="input input-bordered w-full my-3 rounded-none" />
+				<textarea name="message" id="" placeholder="message" class=" textarea w-full rounded-none"></textarea>
 				<button class="btn btn-neutral join-item w-full">Subscribe</button>
 			</div>
 		</fieldset>

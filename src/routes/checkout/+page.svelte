@@ -52,23 +52,23 @@
 	class="flex items-center justify-center h-screen flex-col-reverse lg:flex-row mt-[30vh] lg:mt-0"
 >
 	<form class="w-full max-w-lg" method="post" action="?/paymentInit">
-		<h1 class="text-4xl my-10 mx-4 text-center font-semibold">Chakka Origins,<br> thank you for your business</h1>
+		<h1 class="text-4xl my-10  text-center font-semibold">Chakka Origins, thanks<br>  you for your business!</h1>
 		<div class="flex flex-wrap -mx-3 mb-6">
 			<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 				<input
 					required
-					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-300  py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 rounded-none"
 					type="text"
-					placeholder="first name"
+					placeholder="First Name"
 					name="firstName"
 				/>
 			</div>
 			<div class="w-full md:w-1/2 px-3">
 				<input
 					required
-					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-300 rounded-none py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 					type="text"
-					placeholder="last name"
+					placeholder="Last Name"
 					name="lastName"
 				/>
 			</div>
@@ -79,7 +79,7 @@
 					required
 					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 					type="email"
-					placeholder="email"
+					placeholder="Email"
 					name="email"
 				/>
 			</div>
@@ -88,9 +88,9 @@
 			<div class="w-full px-3">
 				<input
 					required
-					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-300 rounded-none py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 					type="phone"
-					placeholder="phone"
+					placeholder="Phone"
 					name="phone"
 				/>
 			</div>
@@ -105,7 +105,7 @@
 				</label>
 				<div class="relative">
 					<select
-						class="block appearance-none w-full bg-white-800 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+						class="block appearance-none w-full bg-white-800 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-none leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 						name="city"
 					>
 						<option>Addis Ababa</option>
@@ -160,15 +160,15 @@
 			<div class="w-full px-3">
 				<textarea
 					required
-					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+					class="appearance-none block w-full bg-white-800 text-gray-700 border border-gray-200 rounded-none py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 					type="text"
-					placeholder="area description"
+					placeholder="Area Description"
 					name="description"
 				></textarea>
 			</div>
 		</div>
 		<div class=" w-full flex items-center justify-center">
-			<button class=" btn btn-neutral px-10" type="submit"> Pay now </button>
+			<button class=" btn  px-10 bg-[#d6cb6b]" type="submit"> Pay now </button>
 		</div>
 		<input type="hidden" value={subtotal} name="price" />
 		<input type="hidden" value={JSON.stringify($cartStore.cartProducts)} name="order">
@@ -179,14 +179,14 @@
 				<li class=" ">
 					<div class="  m-3 p-3">
 						<img
-							class=" w-[65px] h-[100px] object-cover"
+							class=" w-[65px] h-[100px] object-cover "
 							src={prod.imageURL[0]}
 							alt={prod.name + ' image '}
 						/>
 						<div class=" px-3 w-full flex flex-col justify-between h-full py-2 ">
 							<p>{prod.name}</p>
 							<div class=" flex">
-								<p class="badge badge-neutral rounded h-10 ">
+								<p class="badge bg-[#d6cb6b] rounded h-10 ">
 									{prod.amount} pc{prod.amount === 1 ? '' : 's'}
 								</p>
 								<p class="ml-48">ETB {prod.price}</p>

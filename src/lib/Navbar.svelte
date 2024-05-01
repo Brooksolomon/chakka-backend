@@ -19,11 +19,11 @@
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<ul
 				tabindex="0"
-				class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+				class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 "
 			>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<li><a href="https://www.chakkaorigins.com">Home</a></li>
-				<li class="text-lg"><a href="/biodiverse-oils" data-sveltekit-reload>Biodiverse Oils</a></li>
+				<li ><a href="https://www.chakkaorigins.com">Home</a></li>
+				<li class="text-lg "><a href="/biodiverse-oils" data-sveltekit-reload>Biodiverse Oils</a></li>
 				<li><a href="https://www.chakkaorigins.com/herbs-and-spices">Herbs & Spices</a></li>
 				<li><a href="https://www.chakkaorigins.com/sustainable-source">Sustainable Source</a></li>
 				<li><a href="https://www.chakkaorigins.com/about">About</a></li>
@@ -37,8 +37,8 @@
 		<button></button>
 		<button></button>
 	</div>
-	<div class="navbar-center hidden lg:flex mr-[2rem] mt-[4vh] ">
-		<ul class="menu menu-horizontal lg:gap-[4vw] text-lg" >
+	<div class="navbar-center hidden lg:flex mr-[2rem] mt-[4.3vh] ">
+		<ul class="menu menu-horizontal lg:gap-[3.5vw] text-lg font-thin text-slate-700" >
 			<li ><a href="https://www.chakkaorigins.com">Home</a></li>
 			<li ><a href="/biodiverse-oils" data-sveltekit-reload>Biodiverse Oils</a></li>
 			<li><a href="https://www.chakkaorigins.com/herbs-and-spices">Herbs & Spices</a></li>

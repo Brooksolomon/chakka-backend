@@ -8,9 +8,9 @@
 	import { FireFunc } from '../../lib/firebase/firebase';
 
 	
-	const { fetchProductWithCategory, fetchImageForProduct } = FireFunc;
+	const { fetchAllProducts, fetchImageForProduct } = FireFunc;
 	onMount(async () => {
-		const fetchedProducts = await fetchProductWithCategory('Essential Oils');
+		const fetchedProducts = await fetchAllProducts();
 		const products = await Promise.all(
 			fetchedProducts.map(async (prod) => {
 				try {

@@ -23,15 +23,8 @@
 			>
 				<!-- svelte-ignore a11y-missing-attribute -->
 				<li><a href="https://www.chakkaorigins.com">Home</a></li>
-				<li>
-					<a>Products</a>
-					<ul class="p-2 bg-inherit">
-						<li><a href="/essential-oils">Essential Oils</a></li>
-						<li><a href="/cold-pressed-oils">Cold-Pressed Oils</a></li>
-						<li><a href="/herbs-and-spices">Herbs and Spices</a></li>
-					</ul>
-				</li>
-				<li><a href="https://www.chakkaorigins.com/plants">Plants</a></li>
+				<li class="text-lg"><a href="/biodiverse-oils" data-sveltekit-reload>Biodiverse Oils</a></li>
+				<li><a href="https://www.chakkaorigins.com/herbs-and-spices">Herbs & Spices</a></li>
 				<li><a href="https://www.chakkaorigins.com/sustainable-source">Sustainable Source</a></li>
 				<li><a href="https://www.chakkaorigins.com/about">About</a></li>
 				<li><a href="https://www.chakkaorigins.com/contact">Contact</a></li>
@@ -45,23 +38,13 @@
 		<button></button>
 	</div>
 	<div class="navbar-center hidden lg:flex mr-[2rem] mt-[4vh] ">
-		<ul class="menu menu-horizontal lg:gap-[4vw]">
-			<li class="text-lg"><a href="https://www.chakkaorigins.com">Home</a></li>
-			<li>
-				<details>
-					<summary class="text-lg">Products</summary>
-					<ul class="p-2 w-60 bg-[#f7f3ec]">
-						<li><a><b>All Products</b></a></li>
-						<li><a href="/essential-oils" data-sveltekit-reload ><b>Essential Oils</b></a></li>
-						<li><a href="/cold-pressed-oils" data-sveltekit-reload ><b>Cold-Pressed Oils</b></a></li>
-						<li><a href="/herbs-and-spices" data-sveltekit-reload ><b>Herbs and Spices</b></a></li>
-					</ul>
-				</details>
-			</li>
-			<li class="text-lg"><a href="https://www.chakkaorigins.com/plants">Plants</a></li>
-			<li class="text-lg"><a href="https://www.chakkaorigins.com/sustainable-source">Sustainable Source</a></li>
-			<li class="text-lg"><a href="https://www.chakkaorigins.com/about">About</a></li>
-			<li class="text-lg"><a href="https://www.chakkaorigins.com/contact">Contact</a></li>
+		<ul class="menu menu-horizontal lg:gap-[4vw] text-lg" >
+			<li ><a href="https://www.chakkaorigins.com">Home</a></li>
+			<li ><a href="/biodiverse-oils" data-sveltekit-reload>Biodiverse Oils</a></li>
+			<li><a href="https://www.chakkaorigins.com/herbs-and-spices">Herbs & Spices</a></li>
+			<li ><a href="https://www.chakkaorigins.com/sustainable-source">Sustainable Source</a></li>
+			<li ><a href="https://www.chakkaorigins.com/about">About</a></li>
+			<li ><a href="https://www.chakkaorigins.com/contact">Contact</a></li>
 		</ul>
 	</div>
 </div>

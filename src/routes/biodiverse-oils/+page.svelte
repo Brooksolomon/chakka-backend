@@ -63,9 +63,9 @@
 		<div
 			class=" flex items-center justify-around  "
 		>
-			<a data-sveltekit-reload class=" my-3" href="https://www.chakkaorigins.com/herbs-and-spices"
+			<a data-sveltekit-reload class="	my-3" href="https://www.chakkaorigins.com/herbs-and-spices"
 				><button
-					class=" border-2 font-light tracking-widest text-xl md:text-2xl] w-[18rem] md:w-[20rem] lg:w-[30rem]  border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[8rem]"
+					class=" border-2 font-light tracking-widest text-xl md:text-2xl w-[18rem] md:w-[20rem] lg:w-[30rem]  border-slate-800 p-6 hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[8rem]"
 				>
 					HERBS & SPICES
 				</button></a

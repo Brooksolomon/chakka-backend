@@ -110,7 +110,13 @@
 				/>
 				<div class="collapse-title text-xl font-medium flex items-center">
 					<img src={prod.imageURL[0]} class=" w-[2rem] h-[2rem] rounded-full object-cover" alt="" />
-					<span class=" mx-2">{prod.name}</span>
+					<span class=" mx-2">
+						<div class="flex flex-row justify-between">
+							<span class=" mx-2">{prod.name}</span>
+							<span class=" mx-2">{prod.source}</span>
+							<span class=" mx-2">{prod.price}</span>
+						</div>
+					</span>
 				</div>
 				<div class="collapse-content">
 					<input

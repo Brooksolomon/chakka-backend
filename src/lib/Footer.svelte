@@ -1,5 +1,6 @@
-<footer class="footer py-[5rem]  pb-[12rem] text-base-content w-[99.5vw] bg-[#bb942e] flex-col justify-between ">
-	<nav class="text-xl pl-[4rem]">
+<footer class="footer py-[5rem]  pb-[10	rem] text-base-content w-[99.5vw] bg-[#bb942e] flex-col justify-center  align-center relative">
+	
+	<nav class="text-xl ">
 		<a href="https://www.chakkaorigins.com" class="link link-hover">Home</a>
 		<a class="link link-hover" href="/biodiverse-oils" data-sveltekit-reload>Products</a>
 		<a href="https://www.chakkaorigins.com/herbs-and-spices" class="link link-hover">Herbs & Spices</a>
@@ -44,6 +45,7 @@
 			</div>
 		</fieldset>
 	</form>
+	<p class="absolute bottom-0 left-[47%]  text-center text-md">© 2024 All rights reserved.</p>
 </footer>
 
 

@@ -20,7 +20,7 @@ export const actions = {
         first_name: firstName,
         last_name: lastName,
         callback_url: 'https://chakkawebhook.onrender.com/chapa',
-        return_url: 'https://the-binger.vercel.app/',
+        return_url: 'https://www.chakkaorigins.co/biodiverse-oils',
         customization: {
             title: 'hello',
             description: order

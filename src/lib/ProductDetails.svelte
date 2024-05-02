@@ -52,6 +52,7 @@
 					on:click={handleAddToCart}
 					for="product_details"
 					class="btn font-light tracking-widest text-l bg-[#d6cb6b]  border-none rounded-none p-[10px] px-[3rem] pointer hover:bg-[#aea55a] transition ease-in-out text-slate-800 h-[3rem]"
+					disabled = '{!amount}'
 					>ADD TO CART</button
 				>
 				

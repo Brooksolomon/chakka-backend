@@ -40,7 +40,7 @@
 	<div class="navbar-center hidden lg:flex mr-[2rem] mt-[4.7vh]  ">
 		<ul class="menu menu-horizontal lg:gap-[3.5vw] text-lg font-medium text-slate-700" >
 			<li ><a href="https://www.chakkaorigins.com">Home</a></li>
-			<li ><a href="/biodiverse-oils" data-sveltekit-reload>Biodiverse Oils</a></li>
+			<li ><a href="/biodiverse-oils" data-sveltekit-reload class="underline underline-offset-8">Biodiverse Oils</a></li>
 			<li><a href="https://www.chakkaorigins.com/herbs-and-spices">Herbs & Spices</a></li>
 			<li ><a href="https://www.chakkaorigins.com/sustainable-source">Sustainable Source</a></li>
 			<li ><a href="https://www.chakkaorigins.com/about">About</a></li>

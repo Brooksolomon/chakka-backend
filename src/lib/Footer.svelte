@@ -25,19 +25,19 @@
 	<img src="/chakka2.png" alt="" width="24" class=" w-[20rem]  lg:mt-[14rem]" />
 	<form >
 		<h6>stay in loop with us!</h6>
-		<fieldset class="form-control mr-[4rem]">
-			<div class="flex flex-col gap-2">
-				<div class="flex flex-row gap-2	">
-					<input type="text" placeholder="First Name" class=" input input-bordered rounded-none h-16 " />
-					<input type="text" placeholder="Last Name" class="input input-bordered   rounded-none h-16" />
+		<fieldset class="form-control lg:mr-[4rem]">
+			<div class="flex flex-col lg:gap-2">
+				<div class="flex flex-col sm:flex-col md:flex-col lg:flex-row lg:gap-2	">
+					<input type="text" placeholder="First Name" class=" input input-bordered rounded-none lg:h-16 w-26" />
+					<input type="text" placeholder="Last Name" class="input input-bordered   rounded-none lg:h-16 w-26" />
 				</div>
-				<div class="flex flex-row-reverse gap-2	">
-					<input type="email" placeholder="email" class="input input-bordered   rounded-none h-16 " />
+				<div class="flex flex-row-reverse lg:gap-2	">
+					<input type="email" placeholder="email" class="input input-bordered   rounded-none lg:h-16 w-26 " />
 				</div>
 				
-				<div class="flex flex-row-reverse gap-2">
+				<div class="flex flex-row-reverse lg:gap-2 item-center justify-center">
 				<button
-					class=" border-2 font-light tracking-widest text-xl md:text-2xl w-[6rem] md:w-[12rem] lg:w-[20rem]  border-slate-800  hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[4rem]"
+					class=" border-2 font-light tracking-widest text-xl md:text-2xl w-[6rem] md:w-[12rem] lg:w-[20rem]  border-slate-800  hover:bg-slate-900 hover:text-slate-200 ease-in-out transition text-center h-[4rem] "
 				>
 					FOLLOW ALONG
 				</button>

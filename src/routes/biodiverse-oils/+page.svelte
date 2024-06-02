@@ -83,7 +83,7 @@
 			};
 		});
 	}}
-	class=" w-12 h-16 items-center fixed right-2 top-[45%] flex flex-col w-fit gap-1 rounded-md bg-[#d6cb6b] p-1 px-2 rounded-full"
+	class=" w-12 h-16 items-center fixed right-2 top-[45%] flex flex-col w-fit gap-1 rounded-md bg-[#d6cb6b] p-1 px-2 rounded-full z-50"
 >
 	<large> {cartCount}</large>
 	<ShoppingCart color="#1e2938" class="" weight="thin" size={30} />
